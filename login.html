@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>login</title>
+<link rel="icon" type="image/png" href="images/avatarka.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Orbitron', sans-serif;
+  color:#00aaff;
+  text-align:center;
+  background: linear-gradient(135deg, #0f0f10, #1b1b1e, #0d0d11, #001d33);
+  background-size: 400% 400%; 
+  animation: bgMove 10s ease infinite;
+  min-height:100vh;
+}
+@keyframes bgMove {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+header {margin-top:30px;}
+.logo-main {height:120px; animation:sway 4s ease-in-out infinite;}
+@keyframes sway {0%,50%,100%{transform:rotate(0deg);}25%{transform:rotate(2deg);}75%{transform:rotate(-2deg);} }
+h1 {font-size:2.8em;color:#00b7ff;text-shadow:0 0 8px #0077ff;margin-bottom:20px;}
+.container, .profile-container { width: 360px; margin: 50px auto; padding: 30px 20px; }
+input[type="text"], input[type="email"], input[type="password"], button { width: 100%; display: block; margin: 10px 0; }
+button { width:100%; padding:12px; margin-top:10px; border-radius:6px; border:none; background:#00aaff; color:#fff; font-weight:bold; font-size:1em; cursor:pointer; transition:all 0.3s ease; }
+button:hover {background:#00ccff; box-shadow:0 0 15px #00ccff;}
+.profile-container { background: rgba(0,10,25,0.35); border: 1px solid #00aaff; border-radius:0px; padding:30px 40px; width:400px; margin:50px auto; box-shadow:0 0 25px rgba(0,100,255,0.25); backdrop-filter:blur(4px); color:#00ccff; text-align:left; }
+img.avatar {width:80px; height:80px; border-radius:50%; margin-bottom:10px;}
+.error {color:#ff5555; font-size:0.85em; margin-bottom:10px;}
+.edit-btn { cursor:pointer; color:rgba(255,255,255,0.6); font-size:0.9em; transition: all 0.2s; }
+.edit-btn:hover { color:#00aaff; text-shadow:0 0 8px #00aaff; }
+.info-label { font-weight:bold; margin-right:5px; }
+.info-text { color:#fff; }
+a:hover { color:#00ccff !important; box-shadow:0 0 15px rgba(0,204,255,0.7); text-shadow:0 0 5px #00ccff; }
+#back-link { position:fixed; top:20px; left:20px; display:flex; align-items:center; gap:5px; text-decoration:none; color:#00aaff; font-weight:bold; font-size:1em; background: rgba(0,0,0,0.35); padding:6px 12px; border: 1px solid #00aaff; box-shadow:0 0 10px rgba(0,170,255,0.5); transition: all 0.2s; z-index:1000; }
+</style>
+</head>
+<body>
+
+<a id="back-link" href="main.html">&#8592; Назад</a>
+<script>
+const backLink = document.getElementById('back-link');
+const referrer = document.referrer;
+if(referrer){
+  const url = new URL(referrer);
+  backLink.href = url.pathname;
+}
+</script>
+
+<header>
+  <img src="/images/logo.png" alt="Логотип" class="logo-main">
+</header>
+
+<div id="choice-section" class="container">
+  <button id="show-register">Создать аккаунт</button>
+  <button id="show-login">Войти в аккаунт</button>
+</div>
+
+<div id="register-section" class="container" style="display:none;">
+  <h1>Регистрация</h1>
+  <div id="register-error" class="error"></div>
+  <input type="text" id="reg-nickname" placeholder="Никнейм" maxlength="20">
+  <input type="email" id="reg-email" placeholder="Email">
+  <input type="password" id="reg-password" placeholder="Пароль">
+  <button id="register-btn">Зарегистрироваться</button>
+  <button id="back-register">Назад</button>
+</div>
+
+<div id="login-section" class="container" style="display:none;">
+  <h1>Вход</h1>
+  <div id="login-error" class="error"></div>
+  <input type="email" id="login-email" placeholder="Email">
+  <input type="password" id="login-password" placeholder="Пароль">
+  <button id="login-btn">Войти</button>
+  <button id="back-login">Назад</button>
+</div>
+
+<div id="profile-section" class="profile-container" style="display:none;">
+  <h1>Профиль</h1>
+  <div style="display:flex; align-items:center; gap:20px;">
+    <div style="position:relative; width:80px; height:80px; cursor:pointer;">
+      <img id="profile-avatar" class="avatar" src="images/logo01.png" alt="Аватар">
+      <div id="avatar-overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:50%; background:rgba(0,0,0,0.3); color:white; display:flex; justify-content:center; align-items:center; opacity:0; transition:opacity 0.2s; font-size:0.8em;">Изменить</div>
+      <input type="file" id="avatar-input" accept="image/*" style="display:none;">
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; align-items:center; gap:5px;">
+        <span class="info-label">Имя:</span>
+        <span id="profile-nickname" class="info-text">(без ника)</span>
+        <span class="edit-btn" id="edit-nickname-text">Изменить</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:5px;">
+        <span class="info-label">О себе:</span>
+        <span id="profile-about" class="info-text">Расскажи о себе</span>
+        <span class="edit-btn" id="edit-about-text">Изменить</span>
+      </div>
+    </div>
+  </div>
+  <button id="logout-btn" style="margin-top:20px; width:100%; padding:10px;">Выйти</button>
+</div>
+
+<script type="module">
+import { registerUser, loginUser, logoutUser, getCurrentUser, getLastAvatar, updateCurrentUser, updateAvatar } from './accounts.js';
+
+const choiceSection = document.getElementById('choice-section');
+const registerSection = document.getElementById('register-section');
+const loginSection = document.getElementById('login-section');
+const profileSection = document.getElementById('profile-section');
+
+const registerError = document.getElementById('register-error');
+const loginError = document.getElementById('login-error');
+
+const regNickname = document.getElementById('reg-nickname');
+const regEmail = document.getElementById('reg-email');
+const regPassword = document.getElementById('reg-password');
+const registerBtn = document.getElementById('register-btn');
+const backRegister = document.getElementById('back-register');
+
+const loginEmail = document.getElementById('login-email');
+const loginPassword = document.getElementById('login-password');
+const loginBtn = document.getElementById('login-btn');
+const backLogin = document.getElementById('back-login');
+
+const profileNickname = document.getElementById('profile-nickname');
+const profileAbout = document.getElementById('profile-about');
+const logoutBtn = document.getElementById('logout-btn');
+const profileAvatar = document.getElementById('profile-avatar');
+const avatarOverlay = document.getElementById('avatar-overlay');
+const avatarInput = document.getElementById('avatar-input');
+
+const editNicknameText = document.getElementById('edit-nickname-text');
+const editAboutText = document.getElementById('edit-about-text');
+
+document.getElementById('show-register').addEventListener('click', () => {
+  choiceSection.style.display='none';
+  registerSection.style.display='block';
+});
+document.getElementById('show-login').addEventListener('click', () => {
+  choiceSection.style.display='none';
+  loginSection.style.display='block';
+});
+backRegister.addEventListener('click', () => {
+  registerSection.style.display='none';
+  choiceSection.style.display='block';
+});
+backLogin.addEventListener('click', () => {
+  loginSection.style.display='none';
+  choiceSection.style.display='block';
+});
+
+registerBtn.addEventListener('click', async () => {
+  registerError.textContent='';
+  const email = regEmail.value.trim();
+  const password = regPassword.value.trim();
+  const nickname = regNickname.value.trim();
+  if(!email || !password || !nickname || nickname.length>20){
+    registerError.textContent="ЁБА, ЗАПОЛНИ ПОЛЯ!";
+    return;
+  }
+  try {
+    const user = await registerUser(nickname,email,password);
+    showProfile(user);
+  } catch(e) {
+    registerError.textContent = e.message;
+  }
+});
+
+loginBtn.addEventListener('click', async () => {
+  loginError.textContent='';
+  const email = loginEmail.value.trim();
+  const password = loginPassword.value.trim();
+  if(!email || !password){
+    loginError.textContent="ЁБА, ЗАПОЛНИ ПОЛЯ!";
+    return;
+  }
+  try {
+    const user = await loginUser(email,password);
+    showProfile(user);
+  } catch(e) {
+    loginError.textContent = e.message;
+  }
+});
+
+function showProfile(user){
+  choiceSection.style.display='none';
+  registerSection.style.display='none';
+  loginSection.style.display='none';
+  profileSection.style.display='block';
+  profileNickname.textContent = user?.nickname || "(без ника)";
+  profileAbout.textContent = user?.about || "Расскажи о себе";
+  profileAvatar.src = user?.photo || "images/avatarka01.jpg";
+}
+
+avatarOverlay.addEventListener('mouseenter', ()=>avatarOverlay.style.opacity=1);
+avatarOverlay.addEventListener('mouseleave', ()=>avatarOverlay.style.opacity=0);
+profileAvatar.addEventListener('mouseenter', ()=>avatarOverlay.style.opacity=1);
+profileAvatar.addEventListener('mouseleave', ()=>avatarOverlay.style.opacity=0);
+avatarOverlay.addEventListener('click', ()=>avatarInput.click());
+profileAvatar.addEventListener('click', ()=>avatarInput.click());
+
+avatarInput.addEventListener('change', async (e)=>{
+  const file = e.target.files[0];
+  if(file){
+    const bucketUrl = await updateAvatar(file);
+    profileAvatar.src = bucketUrl;
+  }
+});
+
+editNicknameText.addEventListener('click', async ()=>{
+  const newNick = prompt("Введите новый ник:", profileNickname.textContent);
+  if(newNick && newNick.length <= 20){
+    const updated = await updateCurrentUser({ nickname: newNick });
+    profileNickname.textContent = updated.nickname;
+  }
+});
+
+editAboutText.addEventListener('click', async ()=>{
+  const newAbout = prompt("О себе:", profileAbout.textContent);
+  if(newAbout){
+    const updated = await updateCurrentUser({ about: newAbout });
+    profileAbout.textContent = updated.about;
+  }
+});
+
+logoutBtn.addEventListener('click', async () => {
+  await logoutUser();
+  profileSection.style.display='none';
+  choiceSection.style.display='block';
+});
+
+(async ()=>{
+  const current = await getCurrentUser();
+  if(current) showProfile(current);
+})();
+</script>
+
+</body>
+</html>

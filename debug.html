@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Supabase Test</title>
+</head>
+<body>
+<h1>Supabase Test</h1>
+<div id="output"></div>
+
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+  // Вставь сюда свои данные
+  const supabaseUrl = 'https://mtunttvfbprvgwdaearu.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10dW50dHZmYnBydmd3ZGFlYXJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwODcwODAsImV4cCI6MjA3OTY2MzA4MH0.ECGyw1mniRwNCG8NhFEpGhU997y42J9dBERohP_9lf4';
+
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  const output = document.getElementById('output');
+
+  async function test() {
+    try {
+      const { data, error } = await supabase
+        .from('users')
+        .select('*')
+        .limit(3);  // просто получить 3 пользователя
+
+      if (error) {
+        output.innerHTML = 'Ошибка: ' + error.message;
+        console.error(error);
+      } else {
+        output.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        console.log(data);
+      }
+    } catch (err) {
+      output.innerHTML = 'Ошибка: ' + err.message;
+      console.error(err);
+    }
+  }
+
+  test();
+</script>
+</body>
+</html>

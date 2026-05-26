@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>РЗТ</title>
+<link rel="icon" type="image/png" href="images/флом.webp">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+  background: #000;
+}
+
+/* === Фон GIF === */
+#bg-gif {
+  position: fixed;
+  inset: 0;
+  background: url('/images/НЕБО ФОН.gif') center center / cover no-repeat;
+  z-index: -2;
+  filter: brightness(0.4) contrast(1.2);
+  animation: bgScroll 60s linear infinite;
+}
+@keyframes bgScroll {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* === Login / Аватар в квадратном блоке === */
+#login-container {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,0,0,0.35); /* полупрозрачный */
+  padding: 5px 12px;
+  border: 0.1px solid #00ccff; /* голубая рамка */
+  border-radius: 0; /* квадратный */
+  cursor: pointer;
+}
+#login-container img {
+  width: 30px;
+  height: 30px;
+  border-radius: 0; /* квадратный аватар */
+  object-fit: cover;
+}
+#login-container span {
+  color: #00ccff;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+.login-link {
+  color: #00ccff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+}
+.login-link:hover {
+  color: #fff;
+  text-shadow: 0 0 14px #00ccff;
+  transform: scale(1.1);
+}
+
+/* === Заголовок === */
+h1 {
+  text-align: center;
+  font-size: 4em; /* увеличенный размер */
+  color: #00b7ff;
+  text-shadow: 0 0 12px #0077ff;
+  margin: 20px;
+  font-weight: 900;
+}
+
+/* === Центральный блок === */
+.central-block {
+  max-width: 900px;
+  margin: 20px auto;
+  background: rgba(0,0,0,0.35); /* полупрозрачный */
+  padding: 20px;
+  border-radius: 0; /* квадратный */
+  border: 2px solid #00ccff; /* голубая рамка */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* === Текст описания === */
+.description { line-height: 1.5; }
+
+/* === Выбор трека === */
+.track-selector {
+  background: rgba(0,0,0,0.35); /* полупрозрачный */
+  padding: 10px;
+  cursor: pointer;
+  border: 2px solid #00cfff;
+  color: #00ccff;
+  user-select: none;
+}
+.track-list {
+  display: none;
+  flex-direction: column;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 5px;
+  gap: 5px;
+}
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  background: rgba(0,0,0,0.25); /* чуть прозрачнее */
+  cursor: pointer;
+  color: #00ccff;
+}
+.track-item img { width:40px; height:40px; object-fit:cover; }
+
+/* === Блок рецензии === */
+.review-block { display: none; flex-direction: column; gap: 15px; }
+.review-block h2 { margin:0; font-weight:bold; color:#00ccff; }
+.review-block textarea {
+  width: 100%;
+  min-height: 100px;
+  background: rgba(0,0,0,0.25);
+  border: 2px solid #00cfff;
+  color: #fff;
+  padding: 5px;
+  resize: vertical;
+}
+button.publish-btn {
+  width: 150px;
+  padding: 8px;
+  background: #00cfff;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  color:#000;
+}
+button.publish-btn:hover { background: #00aaff; }
+
+/* === Блок с ползунками - обводка и размещение в отдельном блоке === */
+.rating-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 2px solid #00ccff; /* Квадратная обводка блока */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.rating-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.rating-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.rating-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rating-slider label {
+  color: #fff; /* Белый цвет для названий */
+  font-size: 1.2em; /* Больший шрифт для названий */
+  text-align: left; /* Название ползунков выравнивается по левому краю */
+}
+
+.slider {
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.slider:hover {
+  background: #00ccff;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #00ccff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #00ccff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+span {
+  color: #00ccff;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* === Итоговый балл === */
+#total-score {
+  font-size: 2em; /* Увеличиваем размер итогового балла */
+  font-weight: bold;
+  color: #00ccff;
+}
+</style>
+</head>
+<body>
+<!-- Кнопка Назад -->
+<button id="back-btn" 
+        style="position: fixed; top: 10px; left: 10px; z-index: 1000; background: none; border: none; color: #00ccff; font-size: 2em; cursor: pointer;">
+  ←
+</button>
+
+<!-- Фон -->
+<div id="bg-gif"></div>
+
+<!-- Login / профиль в квадратном блоке -->
+<div id="login-container">
+  <a href="login.html" class="login-link" id="login-link">Войти</a>
+  <img id="user-avatar" src="" alt="Аватар">
+  <span id="user-nickname"></span>
+</div>
+
+<h1>ПОЧУВСТУЙ СЕБЯ АЛЕКСАНДРОМ</h1>
+<h1>ФЛОМАСТЕРОМ</h1>
+
+<div class="central-block">
+  <div class="description">
+    В ДАННОМ РАЗДЕЛЕ ВЫ МОЖЕТЕ НАПИСАТЬ РЕЦЕНЗИЮ НА ЛЮБОЕ МОЕ МУЗЛО, ПРЯМО КАК БУДТО ВЫ АЛЕКСАНДР ФЛОМАСТЕР. ВЫ МОЖЕТЕ ИСПОЛЬЗОВАТЬ ЕГО УНИКАЛЬНУЮ АВТОРСКУЮ МЕТОДИКУ 90-БАЛЛЬНОГО ОЦЕНИВАНИЯ, СТАТЬ САМЫМ ОБЪЕКТИВНЫМ ЧЕЛОВЕКОМ НА ПЛАНЕТЕ И ОБЕСЦЕНИТЬ ЛЮБЫЕ ЭМОЦИИ ОТ МОЕГО ТВОРЧЕСТВА, УЛОЖИВ ИХ В ЦИФЕРКИ НА ПОЛЗУНКАХ. ДОБРО ПОЖАЛОВАТЬ В РИСАЗАТВОРЧЕСКУЮ ВЕТКУ МОЕГО САЙТА. НУ ВАЩЕ ОНА ПОКА НЕ РАБОТАЕТ КАК И СИСТЕМА АККАУНТОВ, НО КОГДА-НИБУДЬ ЗАРАБОТАЕТ. А ЩА ПОБАЛОВАТЬСЯ МОЖНО, ПОТЯГАТЬ ТЯГАЛОЧКИ, ОНИ РИЛИ ИДЕНТИЧНО РАБОТАЮТ. 
+  </div>
+
+  <!-- Выбор трека -->
+  <div class="tracks-container">
+    <div class="track-selector" id="track-selector">Выбрать релиз</div>
+    <div id="track-list" class="track-list"></div>
+  </div>
+
+  <!-- Блок с ползунками -->
+  <div class="rating-container" id="rating-block" style="display: none;">
+    <div class="rating-columns">
+      <div class="rating-column">
+        <div class="rating-slider">
+          <label>Рифмы / Образы</label>
+          <input type="range" id="rhymes-slider" min="1" max="10" value="5" class="slider">
+          <span id="rhymes-value">5</span>
+        </div>
+
+        <div class="rating-slider">
+          <label>Структура / Ритмика</label>
+          <input type="range" id="structure-slider" min="1" max="10" value="5" class="slider">
+          <span id="structure-value">5</span>
+        </div>
+      </div>
+
+      <div class="rating-column">
+        <div class="rating-slider">
+          <label>Реализация стиля</label>
+          <input type="range" id="style-slider" min="1" max="10" value="5" class="slider">
+          <span id="style-value">5</span>
+        </div>
+
+        <div class="rating-slider">
+          <label>Индивидуальность / Харизма</label>
+          <input type="range" id="charisma-slider" min="1" max="10" value="5" class="slider">
+          <span id="charisma-value">5</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rating-slider">
+      <label>Атмосфера / Вайб</label>
+      <input type="range" id="vibe-slider" min="1" max="10" value="1" class="slider">
+      <span id="vibe-value">1</span>
+    </div>
+
+    <div>
+      <h2>Итоговый балл: <span id="total-score">0</span></h2>
+    </div>
+  </div>
+
+  <!-- Блок рецензии -->
+  <div class="review-block" id="review-block">
+    <h2>НАПИСАТЬ ОБЪЕКТИВНУЮ РЕЦЕНЗИЮ:</h2>
+    <textarea id="review-text" placeholder="Введите вашу рецензию..."></textarea>
+    <button class="publish-btn" id="publish-btn">Опубликовать</button>
+  </div>
+</div>
+<script type="module" src="js/supabase-client.js"></script>
+<script type="module" src="js/accounts.js"></script>
+<script type="module">
+import { getCurrentUser, getUsers, updateCurrentUser } from './accounts.js';
+
+// === Login logic ===
+document.addEventListener('DOMContentLoaded', () => {
+  const loginLink = document.getElementById('login-link');
+  const userAvatar = document.getElementById('user-avatar');
+  const userNickname = document.getElementById('user-nickname');
+  const loginContainer = document.getElementById('login-container');
+
+  const currentUser = getCurrentUser();
+
+  if(currentUser){
+    loginLink.style.display='none';
+    userAvatar.src = currentUser.photo || 'images/avatarka01.jpg';
+    userNickname.textContent = currentUser.nickname || '(без ника)';
+    loginContainer.style.display='flex';
+
+    loginContainer.addEventListener('click', () => {
+      window.location.href = 'login.html';
+    });
+  } else {
+    loginLink.style.display='block';
+    userAvatar.style.display='none';
+    userNickname.style.display='none';
+  }
+});
+
+// === Tracks ===
+const tracks = [
+    { id: 21, title: "с меня угараешь", performer: "zverski napalen :3", cover: "images/covers/ugaraesh.gif" }, 
+    { id: 20, title: "эльмао 2", performer: "zverski napalen :3", cover: "images/covers/elmao2.png" },
+    { id: 19, title: "эльмао", performer: "zverski napalen :3", cover: "images/covers/elmao.jpg" },
+    { id: 18, title: "РАКОВОБОЛЬНОЙ УРОДЛИВЫЙ РЕБЁНОК", performer: "zverski napalen :3, mr. whoopee", cover: "images/covers/child.png" },
+    { id: 17, title: "созвонились_в_максе // пазнякс_diss_challenge", performer: "zverski napalen :3", cover: "images/covers/diss.png" },
+    { id: 16, title: "#СВИНЯЧИЙДРИПЧИК", performer: "zverski napalen :3", cover: "images/covers/drip.png" },
+    { id: 15, title: "YT2015TYPESHIT", performer: "zverski napalen :3, черные деньги🥀", cover: "images/covers/yttype.png" },
+    { id: 14, title: "ТРЕМСЯ ЧАКРАМИ", performer: "zverski napalen :3, mr. whoopee, МЦ Princessa Нури", cover: "images/covers/tremsya.jpg" },
+    { id: 13, title: "ДаВаЙ ПоХаПаЕm", performer: "zverski napalen :3", cover: "images/covers/davai.png" },
+    { id: 12, title: "Г/\\@МYРNЬIЙ П@Д0Н@К COVER", performer: "zverski napalen :3", cover: "images/covers/glamurniy.png" },
+    { id: 11, title: "5 GRAMS // lyrical version :(", performer: "zverski napalen :3", cover: "images/covers/5grl.jpg" },
+    { id: 10, title: "5 GRAMS", performer: "zverski napalen :3", cover: "images/covers/5gr.jpg" },
+    { id: 9, title: "Я ебал в рот COVER", performer: "zverski napalen :3", cover: "images/covers/yaebalvrot.jpg" },
+    { id: 8, title: "СОБАКА В РЕХАБЕ", performer: "zverski napalen :3", cover: "images/covers/rehab.png" },
+    { id: 7, title: "ODIN KASSIR", performer: "zverski napalen :3", cover: "images/covers/odinkassir.png" },
+    { id: 5, title: "3ависим ( ͡° ͜ʖ ͡°)", performer: "zverski napalen :3", cover: "images/covers/3avisim.jpg" },
+    { id: 4, title: "XEP", performer: "zverski napalen :3, пастарония", cover: "images/covers/xep.png" },
+    { id: 3, title: "Цитаты про волков", performer: "zverski napalen :3", cover: "images/covers/volk.jpg" },
+    { id: 2, title: "LAZER NAPASIK (ft. bombom)", performer: "zverski napalen :3", cover: "images/covers/lazer.png" },
+    { id: 1, title: "2 Пидора", performer: "zverski napalen :3, МЦ Princessa Нури", cover: "images/covers/2pidora.png" }
+];
+
+const trackSelector=document.getElementById('track-selector');
+const trackList=document.getElementById('track-list');
+const reviewBlock=document.getElementById('review-block');
+const ratingBlock=document.getElementById('rating-block');
+let selectedTrack=null;
+
+function renderTrackList(filter=""){
+  trackList.innerHTML="";
+  tracks.filter(t=>t.title.toLowerCase().includes(filter.toLowerCase())).forEach(track=> {
+    const div=document.createElement('div');
+    div.className='track-item';
+    div.innerHTML=`<img src="${track.cover}"><span>${track.title}</span>`;
+    div.onclick=()=> {
+      const user = getCurrentUser();
+      if(!user){ alert("СНАЧАЛА ЗАРЕГАЙСЯ, БРАТИШКА"); return; }
+      selectedTrack=track;
+      trackSelector.textContent=track.title;
+      trackList.style.display='none';
+      reviewBlock.style.display='flex';
+      ratingBlock.style.display='flex'; // Показываем ползунки
+    };
+    trackList.appendChild(div);
+  });
+}
+
+trackSelector.onclick=()=> {
+  const user = getCurrentUser();
+  if(!user){ alert("СНАЧАЛА ЗАРЕГАЙСЯ, БРАТИШКА"); return; }
+  trackList.style.display = trackList.style.display==='flex'?'none':'flex';
+  if(trackList.style.display==='flex') renderTrackList();
+};
+
+// Обработчик изменения значений ползунков
+const sliders = {
+  rhymes: document.getElementById('rhymes-slider'),
+  structure: document.getElementById('structure-slider'),
+  style: document.getElementById('style-slider'),
+  charisma: document.getElementById('charisma-slider'),
+  vibe: document.getElementById('vibe-slider')
+};
+
+const values = {
+  rhymes: document.getElementById('rhymes-value'),
+  structure: document.getElementById('structure-value'),
+  style: document.getElementById('style-value'),
+  charisma: document.getElementById('charisma-value'),
+  vibe: document.getElementById('vibe-value')
+};
+
+const totalScoreElem = document.getElementById('total-score');
+
+// Функция обновления итогового балла
+function updateTotalScore() {
+  const rhymes = parseInt(sliders.rhymes.value);
+  const structure = parseInt(sliders.structure.value);
+  const style = parseInt(sliders.style.value);
+  const charisma = parseInt(sliders.charisma.value);
+  const vibe = parseFloat(sliders.vibe.value);
+
+  const baseScore = rhymes + structure + style + charisma; // 4 базовых критерия
+  const totalScore = baseScore * 1.4 * (1 + (vibe - 1) * 0.06747); // Множитель для атмосферы/вайба
+
+  // Обновляем отображение значений ползунков и итогового балла
+  values.rhymes.textContent = rhymes;
+  values.structure.textContent = structure;
+  values.style.textContent = style;
+  values.charisma.textContent = charisma;
+  values.vibe.textContent = vibe;
+
+  totalScoreElem.textContent = totalScore.toFixed(2);
+}
+
+// Добавляем обработчик для каждого ползунка
+Object.keys(sliders).forEach(key => {
+  sliders[key].addEventListener('input', updateTotalScore);
+});
+
+// Инициализируем первый расчет
+updateTotalScore();
+// === Окончательная публикация рецензии ===
+document.getElementById('publish-btn').onclick = () => {
+  if (!selectedTrack) return;  // Если трек не выбран — ничего не делаем
+  const text = document.getElementById('review-text').value.trim();
+  if (!text) return alert("НАПИШИ СНАЧАЛА РЕЦЕНЗИЮ");  // Проверка на пустую рецензию
+
+  // Получаем текущего пользователя
+  const users = getUsers();  
+  const user = getCurrentUser();
+  if (!user) {
+    alert("Пользователь не найден. Пожалуйста, войдите в систему.");
+    return;
+  }
+
+  const index = users.findIndex(u => u.email === user.email);
+  if (index === -1) {
+    alert("Пользователь не найден в базе.");
+    return;
+  }
+
+  user.reviews = user.reviews || [];  // Если нет рецензий, создаем пустой массив
+
+  // Создаем объект рецензии
+  const review = {
+    trackId: selectedTrack.id,
+    trackTitle: selectedTrack.title,
+    performer: selectedTrack.performer,
+    cover: selectedTrack.cover,  // Сохраняем обложку
+    reviewText: text,
+    rhymes: parseInt(sliders.rhymes.value),
+    structure: parseInt(sliders.structure.value),
+    style: parseInt(sliders.style.value),
+    charisma: parseInt(sliders.charisma.value),
+    vibe: parseFloat(sliders.vibe.value),
+    totalScore: parseFloat(totalScoreElem.textContent)  // Итоговый балл
+  };
+
+  // Добавляем рецензию в массив рецензий пользователя
+  user.reviews.push(review);
+
+  // Обновляем массив пользователей в localStorage
+  users[index] = user;  // Обновляем данные пользователя в массиве
+  localStorage.setItem('users', JSON.stringify(users));  // Сохраняем обновленные данные
+  localStorage.setItem('currentUser', JSON.stringify(user));  // Сохраняем текущего пользователя
+
+  alert("КАЙФ!");  // Сообщение об успешной публикации
+
+  // Очистка формы рецензии и скрытие блока с рецензией
+  document.getElementById('review-text').value = '';  // Очищаем текстовое поле
+  reviewBlock.style.display = 'none';  // Скрываем блок рецензии
+  ratingBlock.style.display = 'none';  // Скрываем ползунки
+};
+</script>
+<script>
+document.getElementById('back-btn').addEventListener('click', () => {
+    // Если есть referrer — перенаправляем на предыдущую страницу
+    if (document.referrer) {
+        window.location.href = document.referrer;
+    } else {
+        // Иначе просто открываем историю браузера назад
+        window.history.back();
+    }
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+<!-- Кнопка "Читать рецензии" -->
+<div style="
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+">
+  <a href="https://zverskinapalen.neocities.org/flompidor"
+     style="
+       padding: 12px 25px;
+       background: #00ccff;
+       color: #000;
+       text-decoration: none;
+       font-weight: bold;
+       font-size: 1.2em;
+       border: none;
+       cursor: pointer;
+       display: inline-block;
+       transition: background 0.2s ease;
+     "
+     onmouseover="this.style.background='#00aaff'"
+     onmouseout="this.style.background='#00ccff'"
+  >
+    Читать рецензии
+  </a>
+</div>
+

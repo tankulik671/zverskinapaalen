@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Orbitron", sans-serif;
+  color: #00aaff;
+  text-align: center;
+  background: #000;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+a {
+  color: #00ccff;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px #00ccff;
+}
+
+@keyframes bgScroll {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatLogo {
+  0% {
+    transform: translate(var(--start-x), var(--start-y)) rotate(0deg) scale(var(--scale));
+    opacity: 0;
+  }
+  10%, 90% { opacity: var(--opacity); }
+  100% {
+    transform: translate(var(--end-x), var(--end-y)) rotate(var(--rotate)) scale(var(--scale));
+    opacity: 0;
+  }
+}
+
+@keyframes bgPulse {
+  0%,100% { filter: brightness(0.85); }
+  50% { filter: brightness(0.95); }
+}
+
+@keyframes crtFloat {
+  0%,100% { transform: perspective(800px) scale(1.03) translateY(0); }
+  50% { transform: perspective(800px) scale(1.03) translateY(2px); }
+}
+
+@keyframes shakeLetter {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(-1px,1px); }
+  50% { transform: translate(1px,-1px); }
+  75% { transform: translate(-1px,-1px); }
+  100% { transform: translate(0,0); }
+}

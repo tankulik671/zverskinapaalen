@@ -1,0 +1,18 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  background: url("/images/НЕБО ФОН.gif") center center / cover no-repeat;
+  z-index: -2;
+  filter: brightness(0.4) contrast(1.2);
+  animation: bgScroll 60s linear infinite;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0f0f10, #1b1b1e, #0d0d11, #001d33);
+  background-size: 400% 400%;
+  animation: bgMove 10s ease infinite;
+  opacity: 0.3;
+  z-index: -1;
+}

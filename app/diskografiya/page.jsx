@@ -361,140 +361,223 @@ export default function DiscographyPage() {
         </section>
       </div>
 
-      {/* Floating Track Modal */}
+      {/* Centered Track Modal */}
       {selectedTrack && (
         <div
-          ref={floatingRef}
-          className="floating-window"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setSelectedTrack(null);
+          }}
           style={{
             position: 'fixed',
-            left: modalPos.x,
-            top: modalPos.y,
-            width: 'min(600px, 94vw)',
-            background: '#0b0d0e',
-            border: '2px solid rgba(0,160,255,.14)',
-            boxShadow: '0 10px 40px rgba(0,0,0,.7)',
+            inset: 0,
+            background: 'rgba(0, 0, 0, 0.78)',
+            backdropFilter: 'blur(4px)',
             zIndex: 13000,
-            padding: 12,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '16px 12px',
             boxSizing: 'border-box',
-            animation: 'fwAppear 0.2s ease-out',
-            resize: 'both',
-            overflow: 'auto',
           }}
         >
           <div
-            onMouseDown={handleMouseDown}
+            ref={floatingRef}
+            className="floating-window"
             style={{
-              height: 36,
+              position: 'relative',
+              width: 'min(620px, 94vw)',
+              maxHeight: '88vh',
+              background: '#0b0d0e',
+              border: '2px solid rgba(0, 180, 255, 0.35)',
+              boxShadow: '0 0 35px rgba(0, 160, 255, 0.25), 0 20px 50px rgba(0, 0, 0, 0.9)',
+              borderRadius: 8,
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              background: 'rgba(0,0,0,0.2)',
-              margin: '-4px -4px 8px -4px',
-              padding: '0 8px',
-              cursor: isDragging ? 'grabbing' : 'grab',
-              userSelect: 'none'
+              flexDirection: 'column',
+              boxSizing: 'border-box',
+              overflow: 'hidden',
+              animation: 'fwAppear 0.2s ease-out',
             }}
           >
-            <button
-              onClick={() => setSelectedTrack(null)}
-              style={{ background: 'none', border: 'none', color: '#9ff', cursor: 'pointer', fontSize: 18 }}
-            >
-              ✕
-            </button>
-          </div>
-
-          <div style={{ padding: 8, color: '#dfefff' }}>
-            <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', flexWrap: 'wrap' }}>
-              <img
-                src={getCoverUrl(selectedTrack.cover)}
-                alt={selectedTrack.title}
-                onClick={() => window.open(getCoverUrl(selectedTrack.cover), '_blank')}
-                style={{
-                  width: 240,
-                  height: 240,
-                  borderRadius: 6,
-                  objectFit: 'cover',
-                  cursor: 'pointer',
-                  display: 'block'
-                }}
-              />
-              <div style={{ flex: '1 1 240px' }}>
-                <div style={{ fontWeight: 700, fontSize: 24, color: '#bfeaff' }}>{selectedTrack.title}</div>
-                <div style={{ fontSize: 15, color: '#9fc', marginTop: 6 }}>
-                  {selectedTrack.performer || 'zverski napalen :3'} · {selectedTrack.date || ''}
-                </div>
-                <div style={{ margin: '14px 0' }}>
-                  <img
-                    src={
-                      selectedTrack.title?.trim().toUpperCase() === 'РАКОВОБОЛЬНОЙ УРОДЛИВЫЙ РЕБЁНОК'
-                        ? '/images/listenbutton2.png'
-                        : '/images/listenbutton.png'
-                    }
-                    alt="Слушать"
-                    onClick={() => {
-                      if (selectedTrack.listenUrl) {
-                        window.open(selectedTrack.listenUrl, '_blank', 'noopener');
-                      }
-                    }}
-                    style={{ width: 180, cursor: 'pointer', transition: 'transform .08s ease' }}
-                    onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.94)')}
-                    onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', gap: 10, margin: '14px 0 10px' }}>
-              <button
-                onClick={() => setActiveTab('text')}
-                style={{
-                  flex: 1,
-                  padding: '8px 10px',
-                  borderRadius: 6,
-                  border: 0,
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  background: activeTab === 'text' ? '#0b3c59' : '#062030',
-                  color: activeTab === 'text' ? '#bfeaff' : '#9fc'
-                }}
-              >
-                Текст
-              </button>
-              <button
-                onClick={() => setActiveTab('history')}
-                style={{
-                  flex: 1,
-                  padding: '8px 10px',
-                  borderRadius: 6,
-                  border: 0,
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  background: activeTab === 'history' ? '#0b3c59' : '#062030',
-                  color: activeTab === 'history' ? '#bfeaff' : '#9fc'
-                }}
-              >
-                История создания
-              </button>
-            </div>
-
+            {/* Header with Title and Close Button */}
             <div
               style={{
-                whiteSpace: 'pre-wrap',
-                lineHeight: 1.6,
-                color: '#dfefff',
-                textAlign: 'left',
-                maxHeight: '44vh',
-                overflowY: 'auto',
-                borderTop: '1px solid rgba(255,255,255,.03)',
-                paddingTop: 8,
-                fontSize: 16
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                background: 'rgba(0, 25, 50, 0.5)',
+                borderBottom: '1px solid rgba(0, 180, 255, 0.2)',
+                padding: '10px 14px',
+                userSelect: 'none',
               }}
             >
-              {activeTab === 'text'
-                ? selectedTrack.text || 'Текст появится позже.'
-                : selectedTrack.history || 'История скоро будет.'}
+              <div
+                style={{
+                  color: '#00ccff',
+                  fontWeight: 'bold',
+                  fontSize: '0.95em',
+                  letterSpacing: '0.5px',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                  paddingRight: 10,
+                }}
+              >
+                🎵 {selectedTrack.title}
+              </div>
+              <button
+                onClick={() => setSelectedTrack(null)}
+                aria-label="Закрыть"
+                style={{
+                  background: 'rgba(0, 170, 255, 0.15)',
+                  border: '1px solid rgba(0, 170, 255, 0.3)',
+                  borderRadius: 4,
+                  color: '#bfeaff',
+                  cursor: 'pointer',
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  padding: '4px 10px',
+                  lineHeight: 1,
+                  transition: 'background 0.2s',
+                  flexShrink: 0,
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0, 170, 255, 0.35)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0, 170, 255, 0.15)')}
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Scrollable Modal Content */}
+            <div
+              style={{
+                padding: '14px 16px',
+                overflowY: 'auto',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 14,
+                color: '#dfefff',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  gap: 18,
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                }}
+              >
+                <img
+                  src={getCoverUrl(selectedTrack.cover)}
+                  alt={selectedTrack.title}
+                  onClick={() => window.open(getCoverUrl(selectedTrack.cover), '_blank')}
+                  style={{
+                    width: 'min(220px, 60vw)',
+                    height: 'min(220px, 60vw)',
+                    borderRadius: 6,
+                    objectFit: 'cover',
+                    cursor: 'pointer',
+                    display: 'block',
+                    border: '1px solid rgba(0, 180, 255, 0.3)',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+                  }}
+                />
+                <div
+                  style={{
+                    flex: '1 1 220px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    gap: 8,
+                  }}
+                >
+                  <div style={{ fontWeight: 700, fontSize: '1.35em', color: '#bfeaff', lineHeight: 1.2 }}>
+                    {selectedTrack.title}
+                  </div>
+                  <div style={{ fontSize: '0.95em', color: '#00ccff' }}>
+                    {selectedTrack.performer || 'zverski napalen :3'} {selectedTrack.date ? `· ${selectedTrack.date}` : ''}
+                  </div>
+                  <div style={{ marginTop: 6 }}>
+                    <img
+                      src={
+                        selectedTrack.title?.trim().toUpperCase() === 'РАКОВОБОЛЬНОЙ УРОДЛИВЫЙ РЕБЁНОК'
+                          ? '/images/listenbutton2.png'
+                          : '/images/listenbutton.png'
+                      }
+                      alt="Слушать"
+                      onClick={() => {
+                        if (selectedTrack.listenUrl) {
+                          window.open(selectedTrack.listenUrl, '_blank', 'noopener');
+                        }
+                      }}
+                      style={{ width: 170, cursor: 'pointer', transition: 'transform .08s ease', display: 'block' }}
+                      onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.94)')}
+                      onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Tabs */}
+              <div style={{ display: 'flex', gap: 10, marginTop: 4 }}>
+                <button
+                  onClick={() => setActiveTab('text')}
+                  style={{
+                    flex: 1,
+                    padding: '10px',
+                    borderRadius: 4,
+                    border: '1px solid ' + (activeTab === 'text' ? '#00aaff' : 'rgba(0, 170, 255, 0.2)'),
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    background: activeTab === 'text' ? 'rgba(0, 170, 255, 0.25)' : 'rgba(0, 20, 40, 0.4)',
+                    color: activeTab === 'text' ? '#bfeaff' : '#9fb7c7',
+                    fontSize: '1em',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  Текст
+                </button>
+                <button
+                  onClick={() => setActiveTab('history')}
+                  style={{
+                    flex: 1,
+                    padding: '10px',
+                    borderRadius: 4,
+                    border: '1px solid ' + (activeTab === 'history' ? '#00aaff' : 'rgba(0, 170, 255, 0.2)'),
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    background: activeTab === 'history' ? 'rgba(0, 170, 255, 0.25)' : 'rgba(0, 20, 40, 0.4)',
+                    color: activeTab === 'history' ? '#bfeaff' : '#9fb7c7',
+                    fontSize: '1em',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  История создания
+                </button>
+              </div>
+
+              {/* Text / History Content Box */}
+              <div
+                style={{
+                  whiteSpace: 'pre-wrap',
+                  lineHeight: 1.65,
+                  color: '#dfefff',
+                  textAlign: 'left',
+                  maxHeight: '40vh',
+                  overflowY: 'auto',
+                  background: 'rgba(0, 10, 25, 0.4)',
+                  border: '1px solid rgba(0, 180, 255, 0.15)',
+                  borderRadius: 4,
+                  padding: 12,
+                  fontSize: '1em',
+                }}
+              >
+                {activeTab === 'text'
+                  ? selectedTrack.text || 'Текст появится позже.'
+                  : selectedTrack.history || 'История скоро будет.'}
+              </div>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ body {
 #bg-gif {
   position: fixed;
   inset: 0;
-  background: url('/images/НЕБО ФОН.gif') center center / cover no-repeat;
+  background: url('images/НЕБО ФОН.gif') center center / cover no-repeat;
   z-index: -2;
   filter: brightness(0.4) contrast(1.2);
   animation: bgScroll 60s linear infinite;
@@ -153,11 +153,10 @@ h1 {
 <img src="images/output-onlinegiftools.gif" class="bottom-gif" alt="Turnabout">
 
 <script type="module">
-import { supabase } from './supabase-client.js';
-import { getCurrentUser } from './accounts.js';
+import { supabase, getCurrentUser } from './accounts.js';
 
 const reviewsList = document.getElementById('reviews-list');
-const currentUser = getCurrentUser();
+let currentUser = null;
 
 // Рендер одной рецензии
 function renderReview(review) {
@@ -165,10 +164,10 @@ function renderReview(review) {
   div.className = 'review-item';
   
   div.innerHTML = `
-    <img class="user-avatar" src="${review.user_photo || 'images/avatarka01.jpg'}" alt="${review.user_nickname || 'Без ника'}">
+    <img class="user-avatar" src="${review.user_photo || 'images/avatarka01.jpg'}" alt="${escapeHtml(review.user_nickname || 'Без ника')}">
     <div class="review-content">
-      <h3>${review.track_title} — ${review.performer}</h3>
-      <p><strong>Автор:</strong> ${review.user_nickname || 'Без ника'}</p>
+      <h3>${escapeHtml(review.track_title)} — ${escapeHtml(review.performer)}</h3>
+      <p><strong>Автор:</strong> ${escapeHtml(review.user_nickname || 'Без ника')}</p>
       <div class="rating">
         <p>Рифмы/Образы: ${review.rhymes}</p>
         <p>Структура/Ритмика: ${review.structure}</p>
@@ -177,12 +176,12 @@ function renderReview(review) {
         <p>Вайб: ${review.vibe}</p>
       </div>
       <div class="total-score">Итоговый балл: ${review.total_score}</div>
-      <p>${review.review_text}</p>
+      <p>${escapeHtml(review.review_text)}</p>
     </div>
-    <img class="track-cover" src="${review.cover || ''}" alt="${review.track_title}">
+    <img class="track-cover" src="${escapeHtml(review.cover || '')}" alt="${escapeHtml(review.track_title)}">
   `;
 
-  if (currentUser && (currentUser.nickname === review.user_nickname || currentUser.nickname === 'zverskinapalen')) {
+  if (currentUser && (currentUser.nickname === review.user_nickname || currentUser.email === 'zverskinapalen@gmail.com')) {
     const btnContainer = document.createElement('div');
     btnContainer.className = 'edit-delete-buttons';
 
@@ -202,6 +201,17 @@ function renderReview(review) {
   reviewsList.appendChild(div);
 }
 
+function escapeHtml(str) {
+  if (!str && str !== 0) return '';
+  return String(str).replace(/[&<>"']/g, m => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[m]));
+}
+
 // Загружаем все рецензии из Supabase
 async function loadReviews() {
   const { data, error } = await supabase
@@ -212,7 +222,7 @@ async function loadReviews() {
   if (error) { console.error(error); return; }
 
   reviewsList.innerHTML = '';
-  data.forEach(r => renderReview({
+  (data || []).forEach(r => renderReview({
     ...r,
     user_nickname: r.users?.nickname,
     user_photo: r.users?.photo
@@ -260,7 +270,14 @@ async function deleteReview(review) {
   loadReviews();
 }
 
-loadReviews();
+(async () => {
+  try {
+    currentUser = await getCurrentUser();
+  } catch (e) {
+    console.error('Error fetching current user:', e);
+  }
+  loadReviews();
+})();
 </script>
 
 </body>

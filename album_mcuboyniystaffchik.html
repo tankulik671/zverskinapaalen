@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>МЦ УБОЙНЫЙ СТАФФЧИК EP</title>
+<link rel="icon" type="image/png" href="images/covers/MСUBOYNIYSTAFFChIKEP.png">
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#001022;
+  --panel:#222427;
+  --accent:rgba(0,160,255,.14);
+  --neon:#bfeaff;
+  --muted:#9fb7c7;
+}
+html,body{height:100%;margin:0;padding:0}
+body{
+  font-family:'Roboto',system-ui,Arial,sans-serif;
+  color:#cfefff;background:var(--bg);overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+.page-bg{position:fixed;inset:0;background:url("images/НЕБО ФОН.gif")center/cover no-repeat;z-index:-3;filter:brightness(.45)contrast(1.1);animation:bgScroll 60s linear infinite}
+@keyframes bgScroll{0%{background-position:0 0}50%{background-position:100% 100%}100%{background-position:0 0}}
+.overlay-dim{position:fixed;inset:0;background:rgba(0,0,20,.25);z-index:-2}
+
+/* wrapper for scaling UI to 70% */
+.ui-scale-wrap{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  pointer-events:none;
+  margin-top:8px;
+}
+.ui-scale-inner{
+  width:100%;
+  max-width:1180px;
+  transform:scale(0.7);
+  transform-origin:top center;
+  pointer-events:auto;
+  box-sizing:border-box;
+}
+
+/* topbar */
+.topbar{display:flex;align-items:center;gap:18px;padding:0 34px;box-sizing:border-box}
+.topbar .logo{width:88px;height:auto;display:block}
+.title-image{display:block;height:120px;object-fit:contain;margin-left:8px;user-select:none}
+
+/* container */
+.container{max-width:1180px;margin:40px auto;background:var(--panel);border:3px solid rgba(0,140,210,.12);box-shadow:0 6px 30px rgba(0,50,100,.6),0 0 40px rgba(0,140,255,.06) inset;color:#d7eefc;padding:28px 34px;box-sizing:border-box;min-height:60vh}
+
+/* album layout */
+.album-wrap{display:flex;gap:30px;align-items:flex-start;flex-wrap:wrap}
+.album-left{flex:0 0 340px;display:flex;flex-direction:column;align-items:center}
+.album-cover{width:320px;height:320px;background:#111;object-fit:cover;display:block;box-shadow:0 10px 40px rgba(0,140,255,0.06);transition:transform .18s,filter .12s;cursor:pointer;border-radius:0}
+.album-title{
+  font-size:38px;
+  color:var(--neon);
+  font-weight:700;
+  margin-top:14px;
+  text-shadow:0 0 8px rgba(0,160,255,.18);
+  cursor:pointer;
+  text-align:center;
+}
+
+.album-meta{
+  font-size:14px;
+  color:var(--muted);
+  margin-top:6px;
+  text-align:center;
+}
+
+/* tracklist */
+.tracklist{margin-top:24px;width:100%}
+.tracklist ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.tracklist li{padding:14px 16px;background:rgba(255,255,255,0.02);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .12s,transform .12s;font-size:17px;border-radius:0}
+.tracklist li:hover{background:rgba(0,160,255,0.05);transform:translateX(4px)}
+.track-title{font-weight:700;color:#e8fbff}
+.track-feat{color:#9fb7c7;font-size:14px;margin-left:8px}
+
+/* right column */
+.album-right{flex:1;min-width:260px}
+.album-right h3{font-size:24px;color:var(--neon);margin:0 0 10px 0}
+.album-desc{color:#dfefff;line-height:1.6;background:rgba(255,255,255,0.02);padding:16px;border-radius:0}
+.fw-tabs{display:flex;gap:10px;margin-bottom:10px}
+.fw-tabs button{flex:1;padding:10px 12px;border:0;font-weight:700;cursor:pointer;font-size:16px;border-radius:6px}
+.fw-tab-active{background:#0b3c59;color:#bfeaff}
+.fw-tab-inactive{background:#062030;color:#9fc}
+.fw-tab-content{white-space:pre-wrap;line-height:1.7;color:#dfefff;text-align:left;max-height:none;overflow-y:visible;border-top:1px solid rgba(255,255,255,.03);padding-top:10px;font-size:18px}
+.soundcloud-btn{display:block;margin-top:18px;text-align:center}
+.soundcloud-btn img{width:180px}
+
+/* responsive */
+@media (max-width:900px){
+  .ui-scale-inner{ transform: scale(1); }
+  .ui-scale-wrap{ justify-content:flex-start; }
+}
+@media (max-width:720px){
+  .album-wrap{flex-direction:column;align-items:center}
+  .album-left{width:94%}
+  .album-cover{width:240px;height:240px}
+}
+
+.back-btn{display:inline-block;color:#00c2ff;font-weight:700;text-decoration:none;margin-bottom:12px}
+</style>
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+  <div class="overlay-dim" aria-hidden="true"></div>
+
+  <div class="ui-scale-wrap">
+    <div class="ui-scale-inner">
+      <div class="topbar">
+        <a href="azazatrolil.html"><img src="images/logo.png" class="logo" alt="logo"></a>
+        <img src="images/Без названия467_20251106083527.png" class="title-image" alt="Дискография">
+      </div>
+
+      <div class="container">
+        <a class="back-btn" href="diskografiya.html">← Назад</a>
+        <div class="album-wrap">
+          <div class="album-left">
+            <img src="images/covers/MСUBOYNIYSTAFFChIKEP.png" alt="MCUBOYNIYSTAFFChIKEP" class="album-cover" id="albumCover">
+            <div class="album-title" id="albumTitle">МЦ УБОЙНЫЙ СТАФФЧИК EP</div>
+            <div class="album-meta">zverski napalen :3 · 2026</div>
+
+            <div class="tracklist" id="tracklist">
+              <ul id="tracksUl"></ul>
+            </div>
+
+            <div style="margin-top:18px">
+              <a href="https://soundcloud.com/zverskinapalen/sets/mcuboyniystaffchikep" target="_blank" rel="noopener noreferrer">
+                <img src="images/listenbutton.png" alt="Listen on SoundCloud" style="width:180px;display:block;margin:0 auto">
+              </a>
+            </div>
+          </div>
+
+          <div class="album-right" id="albumRight">
+            <h3>Об альбоме:</h3>
+            <div class="album-desc" id="albumDesc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script type="module">
+import { initAlbum } from './js/album-viewer.js';
+initAlbum('mcuboyniystaffchik', { scale: 0.7 });
+</script>
+</body>
+</html>

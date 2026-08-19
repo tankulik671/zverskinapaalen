@@ -1,138 +1,198 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="utf-8" />
-<title>эльмао 2</title>
-<link rel="icon" type="image/png" href="images/covers/elmao2.png">
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#001022;
-  --panel:#222427;
-  --accent:rgba(0,160,255,.14);
-  --neon:#bfeaff;
-  --muted:#9fb7c7;
-}
-html,body{height:100%;margin:0;padding:0}
-body{
-  font-family:'Roboto',system-ui,Arial,sans-serif;
-  color:#cfefff;background:var(--bg);overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-}
-.page-bg{position:fixed;inset:0;background:url("images/НЕБО ФОН.gif")center/cover no-repeat;z-index:-3;filter:brightness(.45)contrast(1.1);animation:bgScroll 60s linear infinite}
-@keyframes bgScroll{0%{background-position:0 0}50%{background-position:100% 100%}100%{background-position:0 0}}
-.overlay-dim{position:fixed;inset:0;background:rgba(0,0,20,.25);z-index:-2}
+export const albumsData = [
+  {
+    slug: "mcuboyniystaffchik",
+    title: "МЦ УБОЙНЫЙ СТАФФЧИК EP",
+    year: "2026",
+    performer: "zverski napalen :3",
+    cover: "images/covers/MСUBOYNIYSTAFFChIKEP.png",
+    listenUrl: "https://soundcloud.com/zverskinapalen/sets/mcuboyniystaffchikep",
+    description: `ПРОСТО ВЕЧЕР С БРАТИШКИНСОМ И НЕМНОГО ТАЙП БИТОВ С ЮТУБА. МЦ УБОЙНЫЙ СТАФФЧИК ПРОРЫВАЕТСЯ НАРУЖУ И СБИВАЕТ СПУТНИКИ ЗЕМЛИ ТЯЖЕЛЫМИ КАПЛЯМИ СО СВОЕЙ ЗАЛУПЫ.`,
+    tracks: [
+  { title: 'OK_PAREN', link: 'https://soundcloud.com/zverskinapalen/ok_paren-1?in=zverskinapalen/sets/mcuboyniystaffchikep', text: `холодильник в городе 
+  
+завтра суббота значит все в норме
+хуй королевский как будто корги
+корги линяет у тебя в горле
+в глотке
+и еще мохнатый
+почему букер везде читает будто трек где папа?
+мой проход не задний
+я курю две пачки за день
+холодильник в городе
+убойный стаффчик в здании
+нарушаю много правил чтоб меня забанили
+ты вася рулем а я Александр ганин
 
-/* wrapper for scaling UI to 70% */
-.ui-scale-wrap{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  pointer-events:none;
-  margin-top:8px;
-}
-.ui-scale-inner{
-  width:100%;
-  max-width:1180px;
-  transform:scale(0.7);
-  transform-origin:top center;
-  pointer-events:auto;
-  box-sizing:border-box;
-}
+я курю прямо в ванне
+курю сквозь бутылку ваниш
+бля ты меня калишь
+блять
+съебись нахуй парень
+парень
+окей окей парень ай
+окей окей окей парень ай
+окей окей окей окей окей окей ай
 
-/* topbar */
-.topbar{display:flex;align-items:center;gap:18px;padding:0 34px;box-sizing:border-box}
-.topbar .logo{width:88px;height:auto;display:block}
-.title-image{display:block;height:120px;object-fit:contain;margin-left:8px;user-select:none}
+завтра суббота значит все в норме
+хуй королевский как будто корги
+корги линяет у тебя в горле
+в глотке в глотке
+и еще мохнатый
+почему букер везде читает будто трек где папа?
+мой проход не задний
+я курю две пачки за день
+холодильник в городе
+убойный стаффчик в здании
+нарушаю много правил чтоб меня забанили
+ты вася рулем а я Александр ганин`,
+history: `ПО СОСТОЯНИЮ ЗДОРОВЬЯ Я ПРИ ЗАПИСИ ПЕРЕПУТАЛ ТЕКСТ И БИТ В ДВУХ ТРЕКАХ И ЭТО ОДИН ИЗ НИХ. В НАЧАЛЕ ПРИПЕВА ПРИСУТСТВУЕТ СТРОКА, ЧТО БЫЛА НАПИСАНА И УЖЕ ИСПОЛЬЗОВАНА В РАМКАХ РАБОТЫ НАД РЕЛИЗОМ "эльмао" В КОМПОЗИЦИИ ПОД НАЗВАНИЕМ "20 этажей.mp3". ЗАПИСЫВАЛ ЕГО ДЛЯ ТЕЛКИ С ДРЕЙН ЗНАКОМСТВ, КОТОРАЯ ПО ИТОГУ ПРОСТО КУПИЛА У МЕНЯ СВЕДЕНИЕ И ВСЕ. ` },
+  { title: '2O_MINUT_5OGO', link: 'https://soundcloud.com/zverskinapalen/2o_minut_5ogo-2?in=zverskinapalen/sets/mcuboyniystaffchikep', text: `чувачок, ну это полное эльмао, я так тебе скажу сейчас
+моя бабушка ходит только в бёрбери
 
-/* container */
-.container{max-width:1180px;margin:40px auto;background:var(--panel);border:3px solid rgba(0,140,210,.12);box-shadow:0 6px 30px rgba(0,50,100,.6),0 0 40px rgba(0,140,255,.06) inset;color:#d7eefc;padding:28px 34px;box-sizing:border-box;min-height:60vh}
+нам сегодня к трем
+а я не спал всю ночь
+я скурил все дерьмо
+я заторчал и вновь
+да мне нужна любовь
+я ставлю все на кон
+я сделал свой реп сайт братишка я как будто флом
+нам сегодня к трем
+а я не спал всю ночь
+я скурил все дерьмо
+я заторчал и вновь
+да мне нужна любовь
+я ставлю все на кон
+я сделал свой реп сайт братишка я как будто флом
 
-/* album layout */
-.album-wrap{display:flex;gap:30px;align-items:flex-start;flex-wrap:wrap}
-.album-left{flex:0 0 340px;display:flex;flex-direction:column;align-items:center}
-.album-cover{width:320px;height:320px;background:#111;object-fit:cover;display:block;box-shadow:0 10px 40px rgba(0,140,255,0.06);transition:transform .18s,filter .12s;cursor:pointer;border-radius:0}
-.album-title{font-size:38px;color:var(--neon);font-weight:700;margin-top:14px;text-shadow:0 0 8px rgba(0,160,255,.18);cursor:pointer}
-.album-meta{font-size:14px;color:var(--muted);margin-top:6px}
+благодаря мне телки начинают жестко шарить
+подсасывают саус отпускают будто шарик
+20 минут пятого я улетаю парень
+ПАРЕНЬ
+улетаю вдаль но у всего должен финал быть
+да я был битардом 
+но я изменился
+я больше не на кислом это крайний доуп релиз мой
+если не учитывать что все биты я спиздил
+то полностью селфмейд ты не найдешь таких артистов
+нет, ты не найдешь такой стаф
+ты не найдешь таких колес даже в аптеке горздрав
+если ты хочешь уебать меня пойдем раз на раз
+ты не найдешь столько веса чтобы меня уебать получилось брат
 
-/* tracklist */
-.tracklist{margin-top:24px;width:100%}
-.tracklist ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
-.tracklist li{padding:14px 16px;background:rgba(255,255,255,0.02);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .12s,transform .12s;font-size:17px;border-radius:0}
-.tracklist li:hover{background:rgba(0,160,255,0.05);transform:translateX(4px)}
-.track-title{font-weight:700;color:#e8fbff}
-.track-feat{color:#9fb7c7;font-size:14px;margin-left:8px}
+в камень ножницы бумага а
+разъебал дипсик по пьяни я
+я останусь в тебе парень бля
+внутри маточной спирали 
+внутри внутриматочной спирали где?
+мою память постирали а
+больше нихуя не помню не
+будто ниче и не знаю я
 
-/* right column */
-.album-right{flex:1;min-width:260px}
-.album-right h3{font-size:24px;color:var(--neon);margin:0 0 10px 0}
-.album-desc{color:#dfefff;line-height:1.6;background:rgba(255,255,255,0.02);padding:16px;border-radius:0}
-.fw-tabs{display:flex;gap:10px;margin-bottom:10px}
-.fw-tabs button{flex:1;padding:10px 12px;border:0;font-weight:700;cursor:pointer;font-size:16px;border-radius:6px}
-.fw-tab-active{background:#0b3c59;color:#bfeaff}
-.fw-tab-inactive{background:#062030;color:#9fc}
-.fw-tab-content{white-space:pre-wrap;line-height:1.7;color:#dfefff;text-align:left;max-height:none;overflow-y:visible;border-top:1px solid rgba(255,255,255,.03);padding-top:10px;font-size:18px}
-.soundcloud-btn{display:block;margin-top:18px;text-align:center}
-.soundcloud-btn img{width:180px}
+моя бабушка ходит только в бёрбери ай
 
-/* responsive */
-@media (max-width:900px){
-  .ui-scale-inner{ transform: scale(1); }
-  .ui-scale-wrap{ justify-content:flex-start; }
-}
-@media (max-width:720px){
-  .album-wrap{flex-direction:column;align-items:center}
-  .album-left{width:94%}
-  .album-cover{width:240px;height:240px}
-}
+нам сегодня к трем
+а я не спал всю ночь
+я скурил все дерьмо
+я заторчал и вновь
+да мне нужна любовь
+я ставлю все на кон
+я сделал свой реп сайт братишка я как будто флом
+нам сегодня к трем
+а я не спал всю ночь
+я скурил все дерьмо
+я заторчал и вновь
+да мне нужна любовь
+я ставлю все на кон
+я сделал свой реп сайт братишка я как будто флом`,
+history: `ЗАФИКСИРОВАЛ МОМЕНТ, РАСКРЫЛ ДУШУ И ОБМАКНУЛ. БЕЗ КЕПОК.` },
+  { title: 'VUSMERT', link: 'https://soundcloud.com/zverskinapalen/vusmert-3?in=zverskinapalen/sets/mcuboyniystaffchikep', text: `использовать гидру
 
-.back-btn{display:inline-block;color:#00c2ff;font-weight:700;text-decoration:none;margin-bottom:12px}
-</style>
-</head>
-<body>
-  <div class="page-bg" aria-hidden="true"></div>
-  <div class="overlay-dim" aria-hidden="true"></div>
+у меня первый подъезд
+впервые нюхал первый
+и я об этом так жалею детка
+так жалею детка
+я шатал свою елду
+братишка я мамлеев
+выхожу не по погоде
+на улице рейни
+выхожу не по погоде
+бля как будто шлюха
+вокруг все потухло
+я один братуха
+это просто моя шутка
+и она смешная
+отойди бля парень
+ты мешаешь
 
-  <div class="ui-scale-wrap">
-    <div class="ui-scale-inner">
-      <div class="topbar">
-        <a href="https://zverskinapalen.neocities.org/azazazatrolil_lalku"><img src="images/logo.png" class="logo" alt="logo"></a>
-        <img src="images/Без названия467_20251106083527.png" class="title-image" alt="Дискография">
-      </div>
+ютубер и стример братик я кузьма и лысый
+я бью себя по писе
+я бью себя по писе
+я люблю пизду бля она пахнет кинзой
+не смываю унитазик парень там застой (я экономлю)
+положил снюс на тарелочку это застолье
+не курил бля три недели это павел воля
+он отдал мне полкой долг и это моя доля
+ты сломал себе голень
+говоришь
+бляяя
+ты сломал себе голень бля почини меня нолик
+мой оппонент притих
+я его затравил
+очень модный дилдо оппоненту я подарил
+адреналин среди горилл да я реально вкусный
+я три недели не курил и накурился вусмерть`,
+history: `ПЕРВЫЙ НАПИСАННЫЙ ТРЕК. А КАК ВАМ ЭНЕРГЕТИК ГОРИЛЛА? МНЕ НЕ ПО КАЙФУ` },
+  { title: 'ZAPLAKAL', link: 'https://soundcloud.com/zverskinapalen/zaplakal-4?in=zverskinapalen/sets/mcuboyniystaffchikep', text: `мц убойный стаффчик
 
-      <div class="container">
-        <a class="back-btn" href="https://zverskinapalen.neocities.org/diskografiya">← Назад</a>
-        <div class="album-wrap">
-          <div class="album-left">
-            <img src="images/covers/elmao2.png" alt="эльмао 2" class="album-cover" id="albumCover">
-            <div class="album-title" id="albumTitle">эльмао 2</div>
-            <div class="album-meta">zverski napalen :3 · 2025</div>
+и мне так плохо - проебали плюху
+эта малыха шарит
+по полу руками тухло
+ты куришь ваку у меня сигаретка за ухом
+мы не нашли и я заплакал
 
-            <div class="tracklist" id="tracklist">
-              <ul id="tracksUl"></ul>
-            </div>
+смотрю на спиннер её глаз — а в центре только пустота
+похоже что момент настал
+скачал из вконтакте бит такой был у артема франка
+моя мечта купить фит с вагинальной запеканкой
+оторви себе глаза и приклей их на жопу
+я надулся сильно сука лопнул
+ты просто мимикрируешь я наливаю водку
+я просто пизжу тайп биты у лохов
+ты даже можешь осуждать меня но бро мне похуй
+просто проебал ту плюшечку теперь мне плохо
+она была последняя
+навсегда запомню это лето я
 
-            <div style="margin-top:18px">
-              <a href="https://soundcloud.com/zverskinapalen/sets/elmao2" target="_blank" rel="noopener noreferrer">
-                <img src="images/listenbutton.png" alt="Listen on SoundCloud" style="width:180px;display:block;margin:0 auto">
-              </a>
-            </div>
-          </div>
+[Глад Валакас]
+куда делась твоя новая женщина? а она меня бросила. из-за того, что я в бутылку ссал. я ссал в бутылку на стриме, она.. ну, она... сказала, что я долбоеб конченый. и бросила. ну я ну мне как бы ну я типа я старался потом как бы не ссать в бутылку. ну а потом сорвался. и все и опять началось и в итоге она меня бросила.
 
-          <div class="album-right" id="albumRight">
-            <h3>Об альбоме:</h3>
-            <div class="album-desc" id="albumDesc">
-               Я РАБОТАЛ НАД ЭТИМ АЛЬБОМОМ ГОД. НАЧАЛ ПИСАТЬ ЕГО ЕЩЕ ПОКА РАБОТАЛ НАД ПЕРВЫМ ЭЛЬМАО. МНОЖЕСТВО МАТЕРИАЛА НЕ ВОШЛО, МНОЖЕСТВО ТРЕКОВ БЫЛО ПЕРЕРАБОТАНО, ПЕРЕСОБРАНО С НУЛЯ. ИЗНАЧАЛЬНО Я ПЛАНИРОВАЛ ВЫПУСТИТЬ ЭЛЬМАО DELUXE, НО В ПРОЦЕССЕ РАБОТЫ ДЛЯ МЕНЯ СТАЛО ОЧЕВИДНО, ЧТО РЕЛИЗ ПОЛУЧАЕТСЯ ЦЕЛЬНЫМ И С ПРЕТЕНЗИЕЙ НА ЧТО-ТО БОЛЬШЕЕ, ЧЕМ ДЕЛЮКС-ДОПОЛНЕНИЕ. БЫЛО ПРИНЯТО РЕШЕНИЕ ЗАКОНЧИТЬ АЛЬБОМ ПОД НАЗВАНИЕМ ЭЛЬМАО 2. ЭЛЬМАО — ЭТО НЕ О ВЫМУЧЕННОСТИ. ДА, КОНЕЧНО, Я ДРОЧИЛСЯ СИДЕЛ, У НЕКОТОРЫХ ТРЕКОВ ПО 10 ВЕРСИЙ СВЕДОСА. НО САМ КОНТЕНТ — САМА СУТЬ — НЕ ВЫБЛЕВАНА ВЫСТРАДАНА. ЭЛЬМАО — ЭТО МОЛОДЕЖНЫЙ СЛЕНГ. ДЕВОЧКАМ ТАКОЕ СЕЙЧАС НРАВИТСЯ. ЭЛЬМАО — ЭТО ПРАЙМ ТОРЧА. ЭЛЬМАО — ЭТО КОГДА ТАК ОБЪЕБАН, ЧТО НЕ ПОНИМАЕШЬ, КТО ТЫ И ГДЕ НАХОДИШЬСЯ. ЭЛЬМАО — ЭТО КОГДА ТЕКСТ ЛЬЁТСЯ ИЗ ТЕБЯ ПОТОКОМ. Я ЖЕЛАЮ КАЖДОМУ ИЗ ВАС НАСЛАДИТЬСЯ ЭЛЬМАО ПО ПОЛНОЙ ПРОГРАММЕ, СТАТЬ ЭЛЬМАОМЭНОМ И ЭЛЬМАОГИРЛАМИ, ДАЖЕ ЕСЛИ ВЫ НИКОГДА В ЖИЗНИ НЕ СОВЕРШАЛИ ГЛОТКА ПИВА. А ЕСЛИ ВАМ УДАСТСЯ ВПЕРВЫЕ ВЫРУБИТЬ БОШЕК, ТО ПЕРВЫМ ДЕЛОМ ПОСЛЕ НАПАСИКА ПОДРУБИТЕ ЭТОТ РЕЛИЗ. ЭТО БУДЕТ ЛУЧШИЙ ЭКСПИРИЕНС, ЧТО МОЖНО ПРЕДСТАВИТЬ. Я ЛИЧНО ТАК И ПОСТУПЛЮ ПРЯМО СЕЙЧАС. КОНЦЕПЦИЯ ЭЛЬМАО СОХРАНЕНА И АПГРЕЙДНУТА, СУТЬ ЭЛЬМАО ГЛУБИННА И ОСТАЛАСЬ НА ПРЕЖНЕМ УРОВНЕ ГЛУБИНЫ, ПРЯМО НА КОНЧИКЕ ЗАЛУПКИ ТЫ ПРОЧУВСТВУЕШЬ ЭТУ РАБОТУ. ГЛАВНОЕ ПРОСТО ЗАХОТЕТЬ, НАЖАТЬ КНОПКУ ПЛЕЙ И ГЛАДИТЬ СЕБЯ ПО МОШОНКЕ, НЕЖНО И ЛАСКОВО. ТАК, БУДТО ГЛАДИШЬ МОШОНКУ ГОСПОДА БОГА. ХОРОШИХ ВЫХОДНЫХ
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+и мне так плохо - проебали плюху
+эта малыха шарит
+по полу руками тухло
+ай сигаретка за ухом
+и я заплакал
 
-<script>
-const elmaoTracks = [
+и мне так плохо - проебали плюху
+эта малыха шарит
+по полу руками тухло
+ты куришь ваку у меня сигаретка за ухом
+мы не нашли и я заплакал
+
+[Глад Валакас]
+не, так да, я ж говорю: а че я на пол должен был ссать? если есть ёмкость куда можно поссать, рядом стоящая, зачем я должен блять не пользоваться этой возможностью? это.. ну как бы блять ну логично же, да? это нормально? согласись.`,
+history: `ТУТ В ТЕКСТЕ ЕСТЬ ОДНА СТРОЧКА, КОТОРУЮ ПРИДУМАЛА НЕЙРОСЕТЬ. Я ТАКУЮ ФОРМУЛИРОВКУ НИКАК УПУСТИТЬ НЕ МОГ. СОГЛАСИСЬ` },
+
+]
+  },
+  {
+    slug: "elmao2",
+    title: "эльмао 2",
+    year: "2025",
+    performer: "zverski napalen :3",
+    cover: "images/covers/elmao2.png",
+    listenUrl: "https://soundcloud.com/zverskinapalen/sets/elmao2",
+    description: `Я РАБОТАЛ НАД ЭТИМ АЛЬБОМОМ ГОД. НАЧАЛ ПИСАТЬ ЕГО ЕЩЕ ПОКА РАБОТАЛ НАД ПЕРВЫМ ЭЛЬМАО. МНОЖЕСТВО МАТЕРИАЛА НЕ ВОШЛО, МНОЖЕСТВО ТРЕКОВ БЫЛО ПЕРЕРАБОТАНО, ПЕРЕСОБРАНО С НУЛЯ. ИЗНАЧАЛЬНО Я ПЛАНИРОВАЛ ВЫПУСТИТЬ ЭЛЬМАО DELUXE, НО В ПРОЦЕССЕ РАБОТЫ ДЛЯ МЕНЯ СТАЛО ОЧЕВИДНО, ЧТО РЕЛИЗ ПОЛУЧАЕТСЯ ЦЕЛЬНЫМ И С ПРЕТЕНЗИЕЙ НА ЧТО-ТО БОЛЬШЕЕ, ЧЕМ ДЕЛЮКС-ДОПОЛНЕНИЕ. БЫЛО ПРИНЯТО РЕШЕНИЕ ЗАКОНЧИТЬ АЛЬБОМ ПОД НАЗВАНИЕМ ЭЛЬМАО 2. ЭЛЬМАО — ЭТО НЕ О ВЫМУЧЕННОСТИ. ДА, КОНЕЧНО, Я ДРОЧИЛСЯ СИДЕЛ, У НЕКОТОРЫХ ТРЕКОВ ПО 10 ВЕРСИЙ СВЕДОСА. НО САМ КОНТЕНТ — САМА СУТЬ — НЕ ВЫБЛЕВАНА ВЫСТРАДАНА. ЭЛЬМАО — ЭТО МОЛОДЕЖНЫЙ СЛЕНГ. ДЕВОЧКАМ ТАКОЕ СЕЙЧАС НРАВИТСЯ. ЭЛЬМАО — ЭТО ПРАЙМ ТОРЧА. ЭЛЬМАО — ЭТО КОГДА ТАК ОБЪЕБАН, ЧТО НЕ ПОНИМАЕШЬ, КТО ТЫ И ГДЕ НАХОДИШЬСЯ. ЭЛЬМАО — ЭТО КОГДА ТЕКСТ ЛЬЁТСЯ ИЗ ТЕБЯ ПОТОКОМ. Я ЖЕЛАЮ КАЖДОМУ ИЗ ВАС НАСЛАДИТЬСЯ ЭЛЬМАО ПО ПОЛНОЙ ПРОГРАММЕ, СТАТЬ ЭЛЬМАОМЭНОМ И ЭЛЬМАОГИРЛАМИ, ДАЖЕ ЕСЛИ ВЫ НИКОГДА В ЖИЗНИ НЕ СОВЕРШАЛИ ГЛОТКА ПИВА. А ЕСЛИ ВАМ УДАСТСЯ ВПЕРВЫЕ ВЫРУБИТЬ БОШЕК, ТО ПЕРВЫМ ДЕЛОМ ПОСЛЕ НАПАСИКА ПОДРУБИТЕ ЭТОТ РЕЛИЗ. ЭТО БУДЕТ ЛУЧШИЙ ЭКСПИРИЕНС, ЧТО МОЖНО ПРЕДСТАВИТЬ. Я ЛИЧНО ТАК И ПОСТУПЛЮ ПРЯМО СЕЙЧАС. КОНЦЕПЦИЯ ЭЛЬМАО СОХРАНЕНА И АПГРЕЙДНУТА, СУТЬ ЭЛЬМАО ГЛУБИННА И ОСТАЛАСЬ НА ПРЕЖНЕМ УРОВНЕ ГЛУБИНЫ, ПРЯМО НА КОНЧИКЕ ЗАЛУПКИ ТЫ ПРОЧУВСТВУЕШЬ ЭТУ РАБОТУ. ГЛАВНОЕ ПРОСТО ЗАХОТЕТЬ, НАЖАТЬ КНОПКУ ПЛЕЙ И ГЛАДИТЬ СЕБЯ ПО МОШОНКЕ, НЕЖНО И ЛАСКОВО. ТАК, БУДТО ГЛАДИШЬ МОШОНКУ ГОСПОДА БОГА. ХОРОШИХ ВЫХОДНЫХ`,
+    tracks: [
   { title: 'Это Эльмао Братик', link: 'https://soundcloud.com/zverskinapalen/eto-elmao-bratik-1?in=zverskinapalen/sets/elmao2', text: `Как обычно я достаю из кармана популярного российского репера Василия Вакуленко и прошу его поддать джазу. Василий, не долго думая, бросается в пляс.
 
 это эльмао, братик, остынь
@@ -1113,95 +1173,593 @@ history: `ВСЕ И ТАК ЗНАЮТ, ЧТО Я КАК МАЛЕНЬКИЙ КУ�
 
 - ну это девчонки такое вот щас любят, эльмао типа`, history: `ЭТА ПЕСНЯ БОЛЬШЕ ДЛЯ САМОГО СЕБЯ НАПИСАНА. НЕ ЗНАЮ, БУДЕТ ЛИ КОГДА-НИБУДЬ ЭЛЬМАО 3, НО ПОКА НЕ ПЛАНИРУЮ. ХОТЕЛОСЬ СДЕЛАТЬ ЗАВЕРШЕНИЕ ИДЕОЛОГИЧЕСКИ ВЕРНОЕ И КОНЦЕПТУАЛЬНО ПОДХОДЯЩЕЕ. ЗАПИСАЛ ЕЩЕ ВЕСНОЙ, СРАЗУ ЗНАЛ, ЧТО НА АУТРО ИДЕТ.
 КАК ОХУЕННО БУДЕТ ПОСЛУШАТЬ ЕГО ЧЕРЕЗ МНОГО ЛЕТ. Я МЕЧТАЮ ОБ ЭТОМ МОМЕНТЕ. ДОЖИТЬ БЫ, СУКА ДОЖИТЬ БЫ. ВОТ ТАКИЕ ДЕЛА.` },
+]
+  },
+  {
+    slug: "elmao",
+    title: "эльмао",
+    year: "2025",
+    performer: "zverski napalen :3",
+    cover: "images/covers/elmao.jpg",
+    listenUrl: "https://soundcloud.com/zverskinapalen/sets/elmao",
+    description: `ТУТ ТОЛЬКО ТЕКСТА К ТРЕКАМ ИЗ МОЕГО МИНИ-АЛЬБОМА «эльмао». ЕСЛИ ВЫ ХОТИТЕ ПОСЛУШАТЬ, ТО ПЕРЕХОДИТЕ ПО ССЫЛКЕ НИЖЕ НА МОЙ САУНДТЕКЛАУДУС :)`,
+    tracks: [
+  { title: 'Штаны', performer: '', link: 'https://soundcloud.com/zverskinapalen/shtany-1?in=zverskinapalen/sets/elmao', text: `nu poyasni za Elmao?
+
+ya pokhudel suka i s menya spadayut shtany
+patlatyy khuy no odevayus kak budto skiny ya
+vot dopishu albom uyedu v monastyr
+eto elmao bratik ostyn
+i snova nesu v stirku prostyn
+kholokost podderzhal repostom
+skazhi mne gospodi gde yan gde in naley podvin mne v moyey dablchashke lin
+s etim repetitorom eshche ne zanimalsya trezvym
+slil siski telki vo vkontakte
+momenty iz detstva
+
+do sikh por ugrozhayet mentami)
+nadeyus morgen budet na vtoroy bandane
+ya nadeyus chto uznayu ob etom zaraneye
+nadeyus toksis nikogda ne budet greshit
+nadeyus khoneymed eshche provedet strimy
+ya pokhudel suka i s menya spadayut shtany`, history: `...` },
+  { title: '20 этажей.mp3', performer: '', link: 'https://soundcloud.com/zverskinapalen/20-etazheimp3-2?in=zverskinapalen/sets/elmao',
+  text: `pizdets
+zavtra subbota znachit vse v norme
+budesh pizdet a znachit te pizdets khoumi
+esli budesh pizdet to tebya pizdets dernet
+vzyebu tebya bazukoy budto zaletel v vormiks
+suka ya v svoyey luchshey forme
+mne ne byvayet skuchno menya etot rep kormit
+zhivu budto v tripe prosto kazhdyy den dolbim
+segodnya net problem znachit svoboden kak dobbi
+etot instrumental elmao zovu ego lolbit
+khochesh popizdet ustroyu te pyat nochey s oppom
+mne ne khvatit etogo dozakazhu kilo optom
+skolko etazhey v etoy rifme mne voobshche pokhuy
+ya vzletel i snova vniz da zovi menya lekha
+unizhayu invalidov inogda erokha
+blyayaya ya i sam znayu chto eto plokho
+konchilsya da suka dayte mne khot krokhu
+mne pokhuy na repchik ya mogu zapisat mnogo roka
+zaraneye vizhu che ty za tip da ya vrode proroka
+da ya bezoruzhen no ty akhuyel s moyego gloka
+provedem krashtest naskolko khrupkaya u tebya glotka
+
+da ya neplokho repuyu no u menya netu deneg
+moy kudryavyy khuy chitayet stikh da moy bratan esenin
+20 etazhey i mozhno paru glagolnykh otseit
+vo skolko ty eto otsenish bratik vo skolko otsenish
+da ya neplokho repuyu no u menya netu deneg
+moy kudryavyy khuy chitayet stikh da moy bratan esenin
+20 etazhey i mozhno paru glagolnykh otseit
+vo skolko ty eto otsenish suka vo skolko otsenish`,
+  history: `...` },
+  { title: 'Клизма с глазами', performer: '', link: 'https://soundcloud.com/zverskinapalen/klizma-s-glazami-3?in=zverskinapalen/sets/elmao',
+  text: `che za biznes suka?
+
+dazhe ne sprashivay
+kak ya potrogal za prostatu danyu kashina
+a ved ego anal takoy zhe ryzhiy
+na mne vasya rulem. a net eto prosto gryzha...
+ya vyzhal iz nego vse soki
+moy khuy vysokiy ya prosnulsya v igre doki doki
+eta pesnya zaletit v tiktoke
+mikro v ruke moniki tashchat fury
+gorin v orle parasha v govne
+eto goryashchiye furri
+mne perepalo duri
+daria dugina drochila dore dure
+slova mogut ranit kak puli i puli kak puli
+ladno ya vam napizdel
+ya ne yuzayu
+ya trezvyy slovno zhopa andreya zamaya
+eto pravda ved vy videli vse sami
+ty smotrish na menya slovno ty klizma s glazami
+zhmu po gazam ya pod spidami dristayu na ekzamene
+lyublyu byt nizhnim tak zhe kak lyublyu byt dominate torreto dominik s torrenta v dominikane skachal sbornik igr tri v odnom i kvesty pro masyanyu
+vy nikhuya ne ponyali? ya proyasnyayu
+Dominik torreto skachal kvesty pro masyanyu i gamayet tselymi dnyami suka pridurok
+on ne pobyet moikh rekordov ved ya v etom dele guru
+slushayet shuru ili shuru povesilsya na shnuru ot krossovok
+nassal tebe v dvernoy zasov khuy tebe v ukho zasovyval vecherami
+otnyne nazyvay menya mommy
+ya tak lyublyu kogda rabotayesh gubami
+poslushal etot trek i prozrel
+mezhdu nami vodorazdel
+i ya razdel tvoyu sobaku slushay siski boleye meneye
+i ya razdelal sobaku pustil eye na pelmeni
+ya boyus ukolov znachit ya ne stavlyus po vene
+vozmite «ni» iz slova «geniy» i postavte pered «geriyey»
+ty govorish chto zavyazal i suka ya tebe ne veryu
+govorish u menya zan ya govoryu davay razdelim
+pod solyami ya sizhu na strime u ivangaya
+shuchu. ved ya trezvyy kak zhopa zamaya
+
+ty smotrish na menya slovno ty klizma s glazami`,
+  history: 'История создания песни "Клизма с глазами"...' },
+  { title: 'Начинал', performer: '', link: 'https://soundcloud.com/zverskinapalen/nachinal-4?in=zverskinapalen/sets/elmao',
+  text: `aga aga pizda tebe a a ayee sasnyy
+
+ya nachinal pisat khipkhop
+10 let nazad
+spasibo patsany.
+chto vernuli mne azart
+skinuli modnyye bity mne v vatsap
+ebal vashi rty kiyevskiy katsap ya
+daval v rot tvoyey mame prinimaya eye rody
+nikogda ne budet khobbi moyey osnovnoy rabotoy
+na zavodik ya poydu ili v mosgortrans
+a po subbotam menya budet trakhat trans
+ili ya ego
+tut uzh kak poydet
+ya kidayu palku v tvoy ogorod
+tochneye ne kidayu
+ved ty zhe menya brosila
+etoy zimoy khotya ya khotel osenyu
+sam tebya brosit naoborot
+no nekomu by bylo davat na rot
+i ya zassal
+blya razmaznya
+ne vopreki
+a blagodarya
+eto seryeznyy reliz
+netu mesta dlya prikolov
+dazhe esli bitva v ofise steplera s dyrokolom
+khuy kolom kogda okolo detdoma oshivayus v pyat utra
+khozhu chasami krugami ya. podbiraya slova
+khochu priznatsya Kate iz yaselnoy gruppy
+postavlyu ey treki senora zalupy
+i vot uzhe ya o tebe zabyl
+ne otdam nikomu Katyu kak Putin Krym khokhlam
+ya nachinal chitat rep primerno v eye goda
+eshche stroilas Moskva i podnimalis goroda
+togda gufu i ptakhe bylo po 15 let
+ty mne ne verish? suka ebanyy mambet
+po moyemu prokurennomu golosu ne slyshno
+chto ya takim kak ty daval pod dyshlo?
+vstal i vyshel suka
+i zashel normalno
+syad i sidi poka ne sdokh
+kak Aleksey Navalnyy
+zakhodi v mayne poigrayem na moy servak
+tik tak stim pank
+tik khepi kiti drags
+na repite
+suki sosite
+gryzite nogti
+Kusayte lokti. kurite
+no ya spokoyno zhdu
+I tvoya sigareta prevratilas v bikfordov shnur
+teper ty prosto zhmur
+snyal s tebya skalp. primeril
+a potom vmesto abazhura zakrutil tvoy cherep suka`,
+  history: 'История создания песни "Начинал"...' },
+  { title: 'Семеро ЗАЛУП', performer: '', link: 'https://soundcloud.com/zverskinapalen/semero-zalup-5?in=zverskinapalen/sets/elmao',
+  text: `moy sup iz semi zalup
+2016
+a komu-to nado stesnyatsya
+komu-to nado
+semero zalup
+
+tvoya pizda pakhnet chipsami
+eshche by nauchitsya
+nezametno drochit za kulisami
+nasmert dratsya v lesu s lisami i s osami
+bez paleva srat mezhdu sosnami. dostat iz glaza zanozy
+perebolel kandidozom i pokhuy
+na moyey mogile napishite riplekha
+my vchetverom tebya mudokhali. gadenysh
+kharkali v kapyushon .ved ty proverku ne proshel
+ya by s toboy kosoy ne bakhnul marinku ne trakhnul dazhe v prikol
+otkryl svoy khuy v formate dzhepeg otdelnoy vkladkoy
+ya trogal siski odnoklassnitsy za shokoladku
+vlozhilsya v mmm eshche kogda ya byl v zachatke
+proter salfetkami khuy ne ostavlyay otpechatkov
+iz kala chetki
+v perchatkakh ya sru ochen vyazko
+moy khuy takoy zataskannyy potrebuyetsya dlya zalupy kaska
+poyasni prichinu tryaski. udmurt
+a?
+semero zalup odnogo ne zhdut
+
+zdarova uyeban dobro pozhalovat v moy klub
+otveday-ka moy sup iz semi zalup
+ty teper v moyey semye znachit tebe ne nuzhno paritsya
+dazhe esli ty ebanaya lysaya karlitsa
+ne proyedet politsay kuri spokoyno bratik
+eshche na tikhom chasu v yaselnoy gruppe ya svatnul sadik
+menya nikto ne spalil i ya vse zanykal
+ya prozhil vsyu zhizn chtoby mne babka nassala v klubniku
+ne pozhalel ni na toliku
+ya talib kvali tolko zovut prosto tolikom
+v detskom mire vse na stonike
+tam zakupayutsya obychno tolko nashi sloniki
+a petukhi i opushchentsy v "dochkakh synochkakh"
+kushayu rostiks vy pizduyte vo vkusno i tochku
+ya praktikuyu almaznuyu drochku
+gryaznyy malchik buda v etoy suchke
+s segodnyashnego dnya ya golodayu do poluchki
+i pod albom mb paketa
+ya ubirayu govno babushki s parketa
+
+*priyatnyye zvuki rtom do kontsa treka*`,
+  history: 'История создания песни "Семеро ЗАЛУП"...' },
+  { title: 'nah gangster', performer: '(feat. МЦ Princessa Нури)', link: 'https://soundcloud.com/zverskinapalen/nah-gangster-6?in=zverskinapalen/sets/elmao',
+  text: `[МЦ Princessa Нури]
+  iznasiloval starukhu.
+v kfs nabili bryukho.
+ukho prilozhili k stenke
+razgovarivayem s dukhom
+u bati drug armyanin
+on torguyet pomidorami
+nam skidka tolko bratskaya
+nakhuy vse dela lyubovnyye
+
+iznasiloval starukhu.
+v kfs nabili bryukho.
+ukho prilozhili k stenke
+razgovarivayem s dukhom
+u bati drug armyanin
+on torguyet pomidorami
+nam skidka tolko bratskaya
+nakhuy vse dela lyubovnyye
+
+v telegrame nik nah ganster
+esli nado budet poyasnyu za khamster kombat
+v telegrame nik nah ganster
+esli nado budet poyasnyu za khamster kombat
+
+[zverski napalen :3]
+ya kak obychno drochu v vagone metro
+v anale banochka koly zero
+0.33 litra
+v maynkrafte s chitami dyupnul elitry
+u menya net vremeni
+iz-za kozyego vymeni
+desyat tsentov vymenyay
+na potnyye groshi
+podozhdi ne speshi
+kuda ne plyun vezde zhid
+ya vykhozhu pokurit na balkone
+vot pizda ya pyatak provoronil
+a ty ne gonish. bratik? da ty pizdish na zhargone
+
+ya iznasiloval starukhu.
+v kfs nabili bryukho.
+ukho prilozhili k stenke
+razgovarivayem s dukhom
+u bati drug armyanin
+on torguyet pomidorami
+nam skidka tolko bratskaya
+nakhuy vse dela lyubovnyye
+
+ya iznasiloval starukhu.
+v kfs nabili bryukho.
+ukho prilozhili k stenke
+razgovarivayem s dukhom
+u bati drug armyanin
+on torguyet pomidorami
+nam skidka tolko bratskaya
+nakhuy vse dela lyubovnyye`,
+  history: 'История создания песни "nah gangster"...' },
+  { title: 'Спиздить', performer: '(п.у. Рога)', link: 'https://soundcloud.com/zverskinapalen/spizdit-7?in=zverskinapalen/sets/elmao',
+  text: `tak uvazhayemyye mnoy afro amerikantsy
+kupyat sebe slantsy
+chtob na plyazhe ebatsya
+
+
+zashazamil bit v kfs i navalil na nego
+za menya nikto ne sharit budto bulvar depo
+komu nakhuy nuzhen lor bulvara depo?
+ne slushal chto ya pisal vozmu tebya ne slabo
+vstretiv nas
+uretralnyy gnom
+pereshel na shepot
+moy penis tak tyazhel budto tyagal ganteli zhopoy
+i nakachal prostatu
+moyu zhizn ne izmenit dazhe khoroshiy dostatok
+eto yavno. da
+kupil govnodav
+paru iz kozhzama
+i ya snova beru v ruki
+svoi nozhnitsy rzhavyye
+otrezayu sebe ushi
+budu luchshim brakhmanom ya
+
+khochu spizdit otnyat
+nayebat i prodat
+sochnyy dikpik
+v soyuz pechat zaslat
+
+khochu spizdit otnyat
+nayebat i prodat
+sochnyy dikpik
+v soyuz pechat zaslat
+
+[Рога]
+V rot ya ebal u stanka stoyat
+Luchshe spizdit otnyat nayebat i prodat
+Luchshe spizdit otnyat nayebat i prodat
+Luchshe spizdit otnyat nayebat nayebat
+
+V rot ya ebal u stanka stanka stoyat
+Pizdit pizdit nayebat i prodat prodat
+Pizdit pizdit nayebatyebat prodatprodatdat
+Spizdit otnyat nayebat nayebat`,
+  history: 'История создания песни "Спиздить"...' },
+  { title: 'Арутик', performer: '', link: 'https://soundcloud.com/zverskinapalen/arutik-8?in=zverskinapalen/sets/elmao',
+  text: `pomnyu my s arutikom
+(vorovali iz pyaterochki dripchik)
+serdtsa stuk ne utikhay
+(nazaryan ty pizdets che za tipchik)
+bolshe nikakikh zig khayl
+(ya lyublyu khachey ya lyublyu khachey ya)
+ya pomnyu my s arutikom
+
+ya pomnyu kak my s arutom
+prygali s parashyuta
+on pochti razbilsya nakhuy
+v myaso v myaso v myaso
+a seychas-to on podnyalsya on tsygan infomoshennik
+my kharkali po mishenyam
+on ne popadal po tseli
+vmeste tsellyulit lechili ego dedushke vasiliyu
+kazhdyy moment tsenili
+byla polnaya idilliya
+
+no ty ushel
+v Buking Mashin
+tochneye v Bugatti Myuzik
+no moy rebenok vse eshche v tvoyem puze...
+
+pomnyu my s arutikom
+(vorovali iz pyaterochki dripchik)
+serdtsa stuk ne utikhay
+(nazaryan ty pizdets che za tipchik)
+bolshe nikakikh zig khayl
+(ya lyublyu khachey ya lyublyu khachey ya)
+pomnyu my s arutikom`,
+  history: 'История создания песни "Арутик"...' },
+  { title: 'Глючит', performer: '', link: 'https://soundcloud.com/zverskinapalen/gliuchit-9?in=zverskinapalen/sets/elmao',
+  text: `da idi ty nakhuy. vovchik
+
+khotel zapisat kruzhok nableval na ekran menya glyuchit
+a teper i ekran glyuchit
+khochetsya ebat tebya udobno tipa ty nik vuychich
+ya spalil tebya za drochkoy blya oblil tebya goryuchim
+ya by sdelal sluchku taks esli mne vypadet sluchay
+ya ubit no dvigayus kak trupak na vidose s buchi
+ya ubit no publikuyu slovno molodoy trezini
+ya vidal kak s vazelinom ot armii otkosili vy
+ty kak pozhiloy vasilyev zhenatyy i nekrasivyy
+takikh kak vy tut zasilye
+miron ne delal nasiliya
+miron ne delal nasiliya
+miron ne delal nasiliya
+on prosto ebal detey ved oni ego poprosili
+vmesto interneta kupil gash
+teper vse visit
+po vaybu tvoi panchi tipa piar-memy vizit
+pokrasneli glaza pokhuy u menya est vizin
+ebashu v pustotu bestselno tipa ya sizif
+chto takoye splif?
+i kuda on tak shustro tochitsya?
+slyshish u tvoyey docheri teplaya chervotochina
+tebya mochit ment i krichit cheto tipa gotcha man
+zakhozhu v podyezd a tam skotch valyayetsya klochiami
+paru marok pod koroy
+logiki antikhaypa
+ya khranyu na chernyy den
+mozhet do svadby
+oldskulnyy vayb ya kak budto vayber
+ty zayebal menya pridurok kak tebya svaypnut?
+kak tebya svaypnut?`,
+  history: 'История создания песни "Глючит"...' },
+  { title: 'Илюха Жопич', performer: '', link: 'https://soundcloud.com/zverskinapalen/iliukha-zhopich-10?in=zverskinapalen/sets/elmao',
+  text: `ovsyankin zanyal svoye mesto v meynstrime
+i dazhe meddison bolshe ne strimit
+a yura dud ne sprashivayet khuyetu pro putina
+prozhigayet moyu nostalgiyu znoy poludennyy
+
+ushla epokha. ved ne strimit ilyukha zhopich
+kak psa menya ostaviv u vremennoy obochiny
+eta ushedshaya epokha . zakryvay glaza
+vspominay ottsa i vse chto unesla
+eta epokha. ved ne strimit ilyukha zhopich
+to chto techet po shcheke eto ne prosto - ochen
+eto ushedshaya epokha. zakryvay glaza
+vernis tuda kuda nelzya khotya b na polchasa
+
+nikogda ne izdadut albom konteynera na diskakh
+i yulik bolshe nikogda ne trakhnet lizzku
+i ne uvidim okhuyennoy skhodki marginala
+ne uvidim kak oksanu sonya po yaytsam pinala
+i ya bolshe nikogda ne uvizhu tekh dvorov
+gde ivan gamaz ne drochil na korov
+na srushchikh korov kstati video v zakrepe
+i mb paket ne budet nyukhat kley cherez paketik
+
+ushla epokha. ved ne strimit ilyukha zhopich
+kak psa menya ostaviv u vremennoy obochiny
+eta ushedshaya epokha . zakryvay glaza
+vspominay ottsa i vse chto unesla
+eta epokha. ved ne strimit ilyukha zhopich
+to chto techet po shcheke eto ne prosto - ochen
+eto ushedshaya epokha. zakryvay glaza
+vernis tuda kuda nelzya khotya b na polchasa
+
+ilyukha zhopich
+ilyukha zhopich
+maslo slivochnoye`,
+  history: 'История создания песни "Илюха Жопич"...' },
+  { title: 'ᔕUPERᔕONIC', performer: '', link: 'https://soundcloud.com/zverskinapalen/shaupershaonic-11?in=zverskinapalen/sets/elmao',
+  text: `PROSNULSYa. SRAZU DAL DVA BONGA — SNOVA SONNYY
+Ya BEGU KAK SONIK — BYSTRYY Ya SUPER SONIK
+PROSNULSYa. SRAZU DAL DVA BONGA — I Ya SNOVA SONNYY
+Ya BEGU KAK SONIK — BYSTRYY Ya SUPER SONIK
+
+ya vladeyu sots setyami svoyey materi i khochesh mogu prokatit tebya na svoyem katere
+ne mogu zapomnit skolko deneg my s toboy na vsyu khuynyu potratili
+dazhe sredi vsekh moikh anrelizov est anrelizy
+Vtorogo shansa net! Koroche. beregis —
+Esli snova dotroneshsya do moyey docheri — Alisy!
+
+SUKA poka ya pisal proshlyy trek meddison dva raza vozvrashchalsya strimit
+moya rabota raz v 6 let vbrasyvat golosa dlya edinoy rossii
+pishet bro "nu kak tam zolotoy ukol?" ya pishu "vse v sile"
+super sonik raznymi golosami kak vy i prosili
+
+moya mocha chista kak voda iz klyucha
+ya uydu lish kogda budet pod pyatdesyat
+ne zhivya tut ponyat supersonik nelzya
+zayebal pisat khuynyu moy mikrofon izyat
+
+PROSNULSYa. SRAZU DAL DVA BONGA — SNOVA SONNYY
+Ya BEGU KAK SONIK — BYSTRYY Ya SUPER SONIK
+PROSNULSYa. SRAZU DAL DVA BONGA — I Ya SNOVA SONNYY
+Ya BEGU KAK SONIK — BYSTRYY Ya SUPER SONIK`,
+  history: 'История создания песни "ᔕUPERᔕONIC"...' },
+  { title: 'Барак Обама', performer: '', link: 'https://soundcloud.com/zverskinapalen/barak-obama-12?in=zverskinapalen/sets/elmao',
+  text: `aga a blyat e opyat barak obama mne napisyval pol dnya
+v telegram
+on khotel chtoby ya ego ebal
+opyat barak obama mne napisyval pol dnya
+v telegram
+on khotel chtoby ya ego ebal
+opyat barak obama mne napisyval pol dnya
+v telegram
+on khotel chtoby ya ego ebal
+opyat barak obama mne napisyval pol dnya
+v telegram
+on khotel chtoby ya ego ebal
+opyat barak obama mne napisyval pol dnya
+v telegram
+on khotel chtoby ya ego ebal
+opyat barak obama mne napisyval pol dnya
+v telegram
+on khotel chtoby ya ego ebal
+opyat barak obama mne napisyval pol dnya
+v telegram
+on khotel chtoby ya ego ebal
+opyat barak obama mne napisyval pol dnya
+v telegram
+on khotel chtoby ya ego ebal
+
+zho bayden ili jo peach
+vam etogo ne postich
+kogda ya poznal. to byl porazhen
+mne soset ouzhi buda i lizhet bushido zho
+v ignor baraka obamu
+i v fortochku kanye uesta
+i tak uzhe mnogo shramov
+podalshe iz togo mesta
+prilipil pyatku v vannoy ya
+no menya predali predaniya
+vse predopredeleno
+tak skazal velikiy
+tak govoril velikiy
+tak napisano na viki
+na moyey zalupe ty ostavish uliki
+proshel do magazina da ya nenavizhu khikki
+eto ochen kruto no mne ochen pokhuy
+mne ne nuzhen navyk chtboy obloposhit lokhov
+kak budto ty na prikole i tebya terzayut khokhmy
+ya ne tolko khochu trakhatsya eshche ya khochu
+no kogda-to ya zhil bedno kirill blednyy myl nogi v taze mednom tebe zazhzhennyy fitil v uretru kurit vredno`,
+  history: 'История создания песни "Барак Обама"...' },
+  { title: 'Всё Хорошо', performer: '', link: 'https://soundcloud.com/zverskinapalen/vsio-khorosho-13?in=zverskinapalen/sets/elmao',
+  text: `kogda vse khorosho
+tvoy otets menya straponit
+s bolyu golovnoy
+pivnoy zhivot rastet ne znaya boli
+za dvorom otyebal olyu
+ey tak bylo khorosho so mnoyu
+chto ona zabyla kto eye kormit
+ya tvoy idol
+a ty pidor
+pomnyu ranshe ochen khotel seks
+s invalidom
+bolshaya chikhuakhua plyuyet na devochku
+kazhdyy den molyus bogam chtob byla tselochka
+i ya khochu tarelochku
+
+tarelochku ukropa
+ya ukrop
+
+ya svozhu za melkiy prays dolboyebov vas
+s yunykh let slushayu tolko mamu s bobom
+gryaz na moikh ladonyakh ya podkleival botinki
+srazu vidno chto ty gibkiy kogda vyginayesh spinku
+vaginalnykh vydeleniy oshchushchayu stoykiy zapakh
+ved kogda vse khorosho ne oshchushchayesh setapa
+napishu sebe anketu v znakomstva dlya invalidov
+esli vyshe to ty pidor
+eti strochki ne dlya vida
+
+napravlyayus na balkon a znachit kucha kala durim
+nasiluyet zhitukha kak sobaku vasya rulem
+i zdes edinstvennyy shans - otshutitsya stebya
+nikomu ne govorit. chto kinnish samogo sebya
+ved kogda vse khorosho
+ty prosto umolishen
+tebe plevat na govno
+plevat na porvannyy gandon
+i vot ty konchil bratishka
+chto s toboyu dalshe budet
+pryamo iz utroby syn dayet salamy odzhi bude suka
+
+- chut opazdyvayu ne vyyebyvaysya. u menya shchas samalet!
+- vaa privet kanalu. pozhaluysta!!
+- privet kanalu i vodnym khranilishcham i vashche vsem
+- khykhy
+- kuda smotret?`,
+  history: 'История создания песни "Всё Хорошо"...' },
+  { title: 'prikol).mp3', performer: '', link: 'https://soundcloud.com/zverskinapalen/prikolmp3-14?in=zverskinapalen/sets/elmao',
+  text: `ty izvini. ya ne... ya poslushal. ya prosta gryu. ty PIDOR. i vse. i poshel dalshe blyatyebat.
+ty menya - ELMAO.
+ya tebe gryu - che et takoye?
+ty grish - nu ELMAO blyat! nu ELMAO ebat! nu i che eto? nu ELMAO! ta idi ty nakhuy blyat ept so svoim elmao blya.
+
+kakoye vpechatleniye ya proizvel na vas etim tekstom
+tolko chto byl moy posledniy napas v detstve
+kogda-to budet moy posledniy napas v zhizni
+da on budet zavtra ty chitayesh moi mysli
+zamayu mevl bekal pekal mekal khevi metal
+moy khuy na tvoyu zhopu brat - teorema viyeta
+shtany iz velveta
+trusy iz kamzola
+i net rezona zabirat mne tvoy dildak s ozona
+i ves moy razum dlya tebya kak zapretnaya zona
+zavozhu budilnik prosypayus v pol vosmogo
+vechera svechi goryat
+na stole chay vetchina
+eta noch na prikol obrechena suka
+
+eto elmao bratik ostyn
+ty opostylil mne kak kostyl
+moyey babushke
+vchera my dali zazu s ney kurili kamyshi
+esli zashel k ney v komnatu to luchshe prosto ne dyshi
+
+ya moskovskiy gomodril
+ssal v butylku i potom cherez neye kuril
+stavil stavki krutil sloty vozglavlyal igil
+v vashi igry ne igrayu
+moi igry detka
+eto tetris saper pryatki russkaya ruletka
+etot bit kak konfetka
+
+vsem skazal brosayu i sizhu na kukhne v dyme
+slushayu dyni po sovmestitelstvu kushayu dynyu
+mechtayu o momente kogda umret pynya
+nemnogo nikotina smotryu porno na latyni
+pokuda netu deneg ya ne pyu martini
+ne kuryu malboro poskolku netu sredstv
+budut sredstva ya bes
+budet priyatnyy ves
+a posle rasskazhu vnukam kak bystro slez ya`,
+  history: 'История создания песни "prikol)...' }
+]
+  }
 ];
-
-const albumRight = document.getElementById('albumRight');
-const tracksUl = document.getElementById('tracksUl');
-const albumCover = document.getElementById('albumCover');
-const albumTitle = document.getElementById('albumTitle');
-
-function renderTrackList(){
-  tracksUl.innerHTML = '';
-  elmaoTracks.forEach((t, idx)=>{
-    const li = document.createElement('li');
-    li.dataset.index = idx;
-    li.innerHTML = `<div class="track-title">${t.title}</div>${t.performer ? `<div class="track-feat">${t.performer}</div>`:''}`;
-    li.addEventListener('click', ()=>showTrackInfo(t, idx));
-    tracksUl.appendChild(li);
-  });
-}
-renderTrackList();
-
-let activeIndex = -1;
-function showTrackInfo(track, idx){
-  activeIndex = idx;
-  highlightActiveTrack();
-  albumRight.innerHTML = `
-    <h3>${escapeHtml(track.title)} ${track.performer ? escapeHtml(track.performer) : ''}</h3>
-    <div class="fw-tabs">
-      <button id="tabText" class="fw-tab-active">Текст</button>
-      <button id="tabHist" class="fw-tab-inactive">История создания</button>
-    </div>
-    <div id="tabContent" class="fw-tab-content">${escapeHtml(track.text)}</div>
-    <div class="soundcloud-btn">
-      <a href="${track.link}" target="_blank" rel="noopener noreferrer">
-        <img src="images/listenbutton.png" alt="Listen on SoundCloud">
-      </a>
-    </div>
-  `;
-  const tabText = document.getElementById('tabText');
-  const tabHist = document.getElementById('tabHist');
-  const tabContent = document.getElementById('tabContent');
-
-  tabText.addEventListener('click',()=>{
-    tabText.className='fw-tab-active'; tabHist.className='fw-tab-inactive';
-    tabContent.textContent = track.text;
-  });
-  tabHist.addEventListener('click',()=>{
-    tabHist.className='fw-tab-active'; tabText.className='fw-tab-inactive';
-    tabContent.textContent = track.history;
-  });
-}
-
-function showAlbumDesc(){
-  activeIndex = -1;
-  highlightActiveTrack();
-  albumRight.innerHTML = `
-    <h3>Об альбоме:</h3>
-    <div class="album-desc">
-       Я РАБОТАЛ НАД ЭТИМ АЛЬБОМОМ ГОД. НАЧАЛ ПИСАТЬ ЕГО ЕЩЕ ПОКА РАБОТАЛ НАД ПЕРВЫМ ЭЛЬМАО. МНОЖЕСТВО МАТЕРИАЛА НЕ ВОШЛО, МНОЖЕСТВО ТРЕКОВ БЫЛО ПЕРЕРАБОТАНО, ПЕРЕСОБРАНО С НУЛЯ. ИЗНАЧАЛЬНО Я ПЛАНИРОВАЛ ВЫПУСТИТЬ ЭЛЬМАО DELUXE, НО В ПРОЦЕССЕ РАБОТЫ ДЛЯ МЕНЯ СТАЛО ОЧЕВИДНО, ЧТО РЕЛИЗ ПОЛУЧАЕТСЯ СЕРЬЕЗНЫМ, ЦЕЛЬНЫМ И С ПРЕТЕНЗИЕЙ НА ЧТО-ТО БОЛЬШЕЕ, ЧЕМ ДЕЛЮКС-ДОПОЛНЕНИЕ. МАТЕРИАЛ ВЫШЕЛ ЗА РАМКИ. БЫЛО ПРИНЯТО РЕШЕНИЕ ЗАКОНЧИТЬ АЛЬБОМ ПОД НАЗВАНИЕМ ЭЛЬМАО 2. ЭЛЬМАО — ЭТО НЕ О ВЫМУЧЕННОСТИ. ДА, КОНЕЧНО, Я ДРОЧИЛСЯ НАД СВЕДЕНИЕМ СИДЕЛ, У НЕКОТОРЫХ ТРЕКОВ ПО 10 ВЕРСИЙ СВЕДОСА И ПО 10 "ФИНАЛЬНЫХ" МАСТЕРИНГОВ. НО САМ КОНТЕНТ — САМА СУТЬ — НЕ ВЫБЛЕВАНА ВЫСТРАДАНА. ЭЛЬМАО — ЭТО МОЛОДЕЖНЫЙ СЛЕНГ. ДЕВОЧКАМ ТАКОЕ СЕЙЧАС НРАВИТСЯ. ЭЛЬМАО — ЭТО ПРАЙМ ТОРЧА. ЭЛЬМАО — ЭТО КОГДА ТАК ОБЪЕБАН, ЧТО НЕ ПОНИМАЕШЬ, КТО ТЫ И ГДЕ НАХОДИШЬСЯ. ЭЛЬМАО — ЭТО КОГДА ТЕКСТ ЛЬЁТСЯ ИЗ ТЕБЯ ПОТОКОМ. Я ЖЕЛАЮ КАЖДОМУ ИЗ ВАС НАСЛАДИТЬСЯ ЭЛЬМАО ПО ПОЛНОЙ ПРОГРАММЕ, СТАТЬ ЭЛЬМАОМЭНОМ И ЭЛЬМАОГИРЛАМИ, ДАЖЕ ЕСЛИ ВЫ НИКОГДА В ЖИЗНИ НЕ СОВЕРШАЛИ ГЛОТКА ПИВА. А ЕСЛИ ВАМ УДАСТСЯ ВПЕРВЫЕ ВЫРУБИТЬ БОШЕК, ТО ПЕРВЫМ ДЕЛОМ ПОСЛЕ ХАПА ПОДРУБИТЕ ЭТОТ РЕЛИЗ. ЭТО БУДЕТ ЛУЧШИЙ ЭКСПИРИЕНС, ЧТО МОЖНО ПРЕДСТАВИТЬ. Я ЛИЧНО ТАК И ПОСТУПЛЮ ПРЯМО СЕЙЧАС. КОНЦЕПЦИЯ ЭЛЬМАО СОХРАНЕНА И АПГРЕЙДНУТА, СУТЬ ЭЛЬМАО ГЛУБИННА И ОСТАЛАСЬ НА ПРЕЖНЕМ УРОВНЕ ГЛУБИНЫ, ПРЯМО НА КОНЧИКЕ ЗАЛУПКИ ТЫ ПРОЧУВСТВУЕШЬ ЭТУ РАБОТУ. ГЛАВНОЕ ПРОСТО ЗАХОТЕТЬ, НАЖАТЬ КНОПКУ ПЛЕЙ И ГЛАДИТЬ СЕБЯ ПО МОШОНКЕ, НЕЖНО И ЛАСКОВО. ТАК, БУДТО ГЛАДИШЬ МОШОНКУ ГОСПОДА БОГА. ХОРОШИХ ВЫХОДНЫХ
-    </div>
-  `;
-}
-
-function highlightActiveTrack(){
-  const items = tracksUl.querySelectorAll('li');
-  items.forEach((li,i)=>{
-    if(i===activeIndex){
-      li.style.background = 'rgba(0,160,255,0.08)';
-      li.style.transform = 'translateX(4px)';
-    } else {
-      li.style.background = 'rgba(255,255,255,0.02)';
-      li.style.transform = '';
-    }
-  });
-}
-
-albumCover.addEventListener('click', ()=>window.open('images/covers/elmao2.png', '_blank'));
-albumTitle.addEventListener('click', showAlbumDesc);
-
-function escapeHtml(str){
-  if (!str && str !== 0) return '';
-  return String(str).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-}
-window.addEventListener('DOMContentLoaded', ()=>{
-  const wrap = document.querySelector('.ui-scale-inner');
-  wrap.style.transform = 'scale(0.7)';
-  const albumWrap = document.querySelector('.album-wrap');
-  albumWrap.style.flexDirection = 'row';
-  albumWrap.style.flexWrap = 'nowrap';
-  albumWrap.style.alignItems = 'flex-start';
-});
-</script>
-</body>
-</html>

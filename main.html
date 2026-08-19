@@ -202,7 +202,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-image: url('/images/logo.png');
+    background-image: url('images/logo.png');
     background-size: contain;
     background-repeat: no-repeat;
     pointer-events: none;
@@ -214,7 +214,7 @@
   #bg-gif {
     position: fixed;
     inset: 0;
-    background: url('/images/НЕБО ФОН.gif') center center / cover no-repeat;
+    background: url('images/НЕБО ФОН.gif') center center / cover no-repeat;
     z-index: -2;
     filter: brightness(0.4) contrast(1.2);
     animation: bgScroll 60s linear infinite;
@@ -260,8 +260,8 @@
   </div>
 
   <header class="fade-in">
-    <img src="/images/logo.png" alt="Логотип ZverskiNapalen" class="logo-main">
-    <img src="/images/logo3.png" alt="Логотип 3" class="logo-second">
+    <img src="images/logo.png" alt="Логотип ZverskiNapalen" class="logo-main">
+    <img src="images/logo3.png" alt="Логотип 3" class="logo-second">
   <nav class="fade-in">
     <a href="diskografiya.html">ДИСКОГРАФИЯ</a>
     <span style="color:#0077ff;">•</span>
@@ -449,24 +449,30 @@ scrollBtn.addEventListener('click', () => {
 <script type="module">
 import { getCurrentUser } from './accounts.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const loginLink = document.getElementById('login-link');
   const userBadge = document.getElementById('user-badge');
   const userAvatar = document.getElementById('user-avatar');
   const userNickname = document.getElementById('user-nickname');
 
-  const currentUser = getCurrentUser();
+  try {
+    const currentUser = await getCurrentUser();
 
-  if(currentUser){
-    loginLink.style.display = 'none';
-    userAvatar.src = currentUser.photo || 'images/avatarka01.jpg';
-    userNickname.textContent = currentUser.nickname || '(без ника)';
-    userBadge.style.display = 'flex';
+    if(currentUser){
+      loginLink.style.display = 'none';
+      userAvatar.src = currentUser.photo || 'images/avatarka01.jpg';
+      userNickname.textContent = currentUser.nickname || '(без ника)';
+      userBadge.style.display = 'flex';
 
-    userBadge.addEventListener('click', () => {
-      window.location.href = 'login.html';
-    });
-  } else {
+      userBadge.addEventListener('click', () => {
+        window.location.href = 'login.html';
+      });
+    } else {
+      loginLink.style.display = 'block';
+      userBadge.style.display = 'none';
+    }
+  } catch(err) {
+    console.error('Error loading current user:', err);
     loginLink.style.display = 'block';
     userBadge.style.display = 'none';
   }

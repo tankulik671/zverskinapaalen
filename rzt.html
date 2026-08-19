@@ -18,7 +18,7 @@ body {
 #bg-gif {
   position: fixed;
   inset: 0;
-  background: url('/images/НЕБО ФОН.gif') center center / cover no-repeat;
+  background: url('images/НЕБО ФОН.gif') center center / cover no-repeat;
   z-index: -2;
   filter: brightness(0.4) contrast(1.2);
   animation: bgScroll 60s linear infinite;
@@ -306,30 +306,32 @@ span {
     <button class="publish-btn" id="publish-btn">Опубликовать</button>
   </div>
 </div>
-<script type="module" src="js/supabase-client.js"></script>
-<script type="module" src="js/accounts.js"></script>
 <script type="module">
-import { getCurrentUser, getUsers, updateCurrentUser } from './accounts.js';
+import { getCurrentUser, supabase } from './accounts.js';
 
 // === Login logic ===
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const loginLink = document.getElementById('login-link');
   const userAvatar = document.getElementById('user-avatar');
   const userNickname = document.getElementById('user-nickname');
   const loginContainer = document.getElementById('login-container');
 
-  const currentUser = getCurrentUser();
+  try {
+    const currentUser = await getCurrentUser();
 
-  if(currentUser){
-    loginLink.style.display='none';
-    userAvatar.src = currentUser.photo || 'images/avatarka01.jpg';
-    userNickname.textContent = currentUser.nickname || '(без ника)';
-    loginContainer.style.display='flex';
-
-    loginContainer.addEventListener('click', () => {
-      window.location.href = 'login.html';
-    });
-  } else {
+    if(currentUser){
+      loginLink.style.display='none';
+      userAvatar.src = currentUser.photo || 'images/avatarka01.jpg';
+      userNickname.textContent = currentUser.nickname || '(без ника)';
+      userAvatar.style.display='block';
+      userNickname.style.display='inline';
+    } else {
+      loginLink.style.display='block';
+      userAvatar.style.display='none';
+      userNickname.style.display='none';
+    }
+  } catch(e) {
+    console.error('Error getting current user:', e);
     loginLink.style.display='block';
     userAvatar.style.display='none';
     userNickname.style.display='none';
@@ -492,33 +494,13 @@ document.getElementById('publish-btn').onclick = () => {
   ratingBlock.style.display = 'none';  // Скрываем ползунки
 };
 </script>
-<script>
-document.getElementById('back-btn').addEventListener('click', () => {
-    // Если есть referrer — перенаправляем на предыдущую страницу
-    if (document.referrer) {
-        window.location.href = document.referrer;
-    } else {
-        // Иначе просто открываем историю браузера назад
-        window.history.back();
-    }
-});
-</script>
-
-</body>
-</html>
-
-
-
-
-
-<!-- Кнопка "Читать рецензии" -->
 <div style="
   width: 100%;
   display: flex;
   justify-content: center;
   margin: 40px 0;
 ">
-  <a href="https://zverskinapalen.neocities.org/flompidor"
+  <a href="reviews.html"
      style="
        padding: 12px 25px;
        background: #00ccff;
@@ -537,4 +519,17 @@ document.getElementById('back-btn').addEventListener('click', () => {
     Читать рецензии
   </a>
 </div>
+
+<script>
+document.getElementById('back-btn').addEventListener('click', () => {
+    if (document.referrer) {
+        window.location.href = document.referrer;
+    } else {
+        window.location.href = 'main.html';
+    }
+});
+</script>
+
+</body>
+</html>
 

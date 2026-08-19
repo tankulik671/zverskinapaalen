@@ -43,8 +43,8 @@ html, body {
   -ms-interpolation-mode: nearest-neighbor;
   display:none;
   z-index:5;
+  filter: contrast(1.2) brightness(1.1);
 }
-filter: contrast(1.2) brightness(1.1);
 </style>
 </head>
 <body>
@@ -109,9 +109,9 @@ function triggerDogExit() {
     dogExit.style.display = "block";
 
     // отключаем события и таймеры
-    document.onmousemove = null;
-    document.onkeydown = null;
-    document.onclick = null;
+    document.removeEventListener("mousemove", resetIdle);
+    document.removeEventListener("keydown", resetIdle);
+    document.removeEventListener("click", resetIdle);
     clearInterval(idleInterval);
 
     // когда вторая гифка отыграет — остаётся чёрный экран

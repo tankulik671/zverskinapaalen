@@ -64,6 +64,20 @@ a:hover {
   }
 }
 
+@keyframes floatLogoClick {
+  0% {
+    transform: translate(var(--start-x), var(--start-y)) rotate(0deg) scale(var(--scale));
+    opacity: var(--opacity);
+  }
+  85% {
+    opacity: var(--opacity);
+  }
+  100% {
+    transform: translate(var(--end-x), var(--end-y)) rotate(var(--rotate)) scale(var(--scale));
+    opacity: 0;
+  }
+}
+
 @keyframes sway {
   0%, 50%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(2deg); }
@@ -117,6 +131,7 @@ a:hover {
   100% { transform: translate(-50%, -50%) scale(1); filter: brightness(1); }
 }
 
+.floating-logo,
 .floating-logo-node {
   position: fixed;
   top: 0;
@@ -125,5 +140,6 @@ a:hover {
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
+  z-index: 0;
   will-change: transform;
 }

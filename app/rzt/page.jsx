@@ -7,6 +7,13 @@ import { tracksData } from '@/data/tracks';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/lib/supabase';
 
+const getCoverUrl = (cover) => {
+  if (!cover) return '/images/covers/zabrali.png';
+  const c = cover.trim();
+  if (c.startsWith('/') || c.startsWith('http')) return c;
+  return '/' + c;
+};
+
 export default function RztPage() {
   const router = useRouter();
   const { user, profile } = useAuth();
@@ -56,7 +63,7 @@ export default function RztPage() {
         track_id: selectedTrack.title,
         track_title: selectedTrack.title,
         performer: selectedTrack.performer || 'zverski napalen :3',
-        cover: selectedTrack.cover ? selectedTrack.cover.trim() : '/images/covers/zabrali.png',
+        cover: getCoverUrl(selectedTrack.cover),
         review_text: reviewText.trim(),
         rhymes: scores.rhymes,
         structure: scores.structure,
@@ -185,7 +192,7 @@ export default function RztPage() {
                     }}
                   >
                     <img
-                      src={t.cover ? t.cover.trim() : '/images/covers/zabrali.png'}
+                      src={getCoverUrl(t.cover)}
                       alt={t.title}
                       style={{ width: 40, height: 40, objectFit: 'cover' }}
                     />
@@ -204,7 +211,7 @@ export default function RztPage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
                 <img
-                  src={selectedTrack.cover ? selectedTrack.cover.trim() : '/images/covers/zabrali.png'}
+                  src={getCoverUrl(selectedTrack.cover)}
                   alt={selectedTrack.title}
                   style={{ width: 60, height: 60, objectFit: 'cover', border: '1px solid #00ccff' }}
                 />

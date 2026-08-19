@@ -96,21 +96,29 @@ export function AuthProvider({ children }) {
   };
 
   const register = async (nickname, email, password) => {
-    const { data: authData, error: authError } = await supabase.auth.signUp({ email, password });
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          nickname: nickname || '',
+        },
+      },
+    });
     if (authError) throw authError;
     if (!authData.user) throw new Error('Не удалось создать пользователя');
 
     const userId = authData.user.id;
 
-    // Create profile row in users table (without saving plaintext password)
+    // Create or update profile row in users table
     const { data: profData, error: profError } = await supabase
       .from('users')
-      .insert({
+      .upsert({
         id: userId,
         nickname: nickname || '',
         email: email,
-        photo: 'images/avatarka01.jpg',
-        about: 'Расскажи о себе'
+        photo: '/images/avatarka01.jpg',
+        about: 'Расскажи о себе',
       })
       .select()
       .maybeSingle();
@@ -120,7 +128,7 @@ export function AuthProvider({ children }) {
     }
 
     setUser(authData.user);
-    const currentProf = profData || { id: userId, nickname, email, photo: 'images/avatarka01.jpg', about: 'Расскажи о себе' };
+    const currentProf = profData || { id: userId, nickname, email, photo: '/images/avatarka01.jpg', about: 'Расскажи о себе' };
     setProfile(currentProf);
     return currentProf;
   };

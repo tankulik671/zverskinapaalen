@@ -5,6 +5,13 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/context/AuthContext';
 
+const getCoverUrl = (cover) => {
+  if (!cover) return '/images/covers/zabrali.png';
+  const c = cover.trim();
+  if (c.startsWith('/') || c.startsWith('http')) return c;
+  return '/' + c;
+};
+
 export default function ReviewsPage() {
   const { user } = useAuth();
   const [reviews, setReviews] = useState([]);
@@ -197,7 +204,7 @@ export default function ReviewsPage() {
 
                     {r.cover && (
                       <img
-                        src={r.cover}
+                        src={getCoverUrl(r.cover)}
                         alt={r.track_title}
                         style={{
                           width: 120,

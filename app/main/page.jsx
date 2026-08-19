@@ -5,19 +5,6 @@ import Header from '@/components/Header';
 export default function MainPage() {
   return (
     <div style={{ textAlign: 'center', minHeight: '100vh', paddingBottom: 60 }}>
-      {/* Эффект плавного появления из черного экрана */}
-      <div
-        className="fade-overlay"
-        style={{
-          position: 'fixed',
-          inset: 0,
-          background: 'black',
-          zIndex: 9999,
-          pointerEvents: 'none',
-          animation: 'fadeOutOverlay 6s ease forwards'
-        }}
-      />
-
       <div style={{ animation: 'fadeInUp 6s ease forwards', animationDelay: '1s', opacity: 0 }}>
         <Header />
       </div>

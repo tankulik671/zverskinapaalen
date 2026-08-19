@@ -4,7 +4,7 @@ export const tracksData = [
     title: 'ЗАБРАЛИ',
     date: '05.05.26',
     performer: 'шанкр, zverski napalen :3',
-    cover: ' images/covers/zabrali.png',
+    cover: '/images/covers/zabrali.png',
     listenUrl: 'https://soundcloud.com/dimagio-e/zabrali',
     text: `[шанкр]
 
@@ -85,7 +85,7 @@ history: `один репер устал ныть объебался и  нап�
     title: 'akurki',
     date: '25.04.26',
     performer: 'zverski napalen :3',
-    cover: ' images/covers/akurki.png',
+    cover: '/images/covers/akurki.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/akurki',
     text: `в чашке с чаем в чашке с чаем плавают окурки
 учу пароль от падика перед этой прогулкой
@@ -131,7 +131,7 @@ history: ` `
     title: 'zveri na party',
     date: '16.04.26',
     performer: 'zverski napalen :3',
-    cover: ' images/covers/zverinapati.png',
+    cover: '/images/covers/zverinapati.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/zverinaparty',
     text: `все мои звери на пати
 все мои звери на пати
@@ -177,7 +177,7 @@ history: `ОБНАРУЖИЛ БУШИДО ЖО * БИГ БЕБИ ТЕЙП * ПЛ
     title: 'ВЕСОМЫЙ ФЕРМЕР',
     date: '09.04.26',
     performer: 'МЦ УБОЙНЫЙ СТАФФЧИК, МЦ РЕЦИДИВНЫЙ ПАНАРИЦИЙ',
-    cover: 'images/covers/vesomiyfermer.jpg',
+    cover: '/images/covers/vesomiyfermer.jpg',
     listenUrl: 'https://soundcloud.com/zverskinapalen/vesomiyfermer',
     text: `блять хуесосы
 весомый фермер готувит баляляляляляля
@@ -251,7 +251,7 @@ history: `МЦ РЕЦИДИВНЫЙ ПАНАРИЦИЙ ПРЕДОСТАВИЛ С
     title: 'НЕ ПИШИ МНЕ FREESTYLE',
     date: '26.02.26',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/ne-pishi.jpg',
+    cover: '/images/covers/ne-pishi.jpg',
     listenUrl: 'https://soundcloud.com/zverskinapalen/nepishimnefreestyle',
     text: `не пиши мне ай ай
 я буду злой на отходах
@@ -290,7 +290,7 @@ history: `я не касался жабинки гродно`
     title: 'ФАКУЛЬТЕТ ФИЛОЛОГИИ',
     date: '15.02.26',
     performer: 'zverski napalen :3, ЯНА КРИКЕД',
-    cover: 'images/covers/FAKULTETFILOLOGII.png',
+    cover: '/images/covers/FAKULTETFILOLOGII.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/fakultet-filologii',
     text: `[ЯНА КРИКЕД]
 
@@ -359,7 +359,7 @@ history: `4 февраля
     title: 'ЧИКИ-ПАУ-ПАУ',
     date: '10.02.26',
     performer: 'zverski napalen :3, zavtruck',
-    cover: 'images/covers/CHIKICHIKIPAU.png',
+    cover: '/images/covers/CHIKICHIKIPAU.png',
     listenUrl: 'https://soundcloud.com/y91inu9p4lqs/chiki-pau-pau-wav',
     text: `[zverski napalen :3]
 
@@ -447,7 +447,7 @@ history: `МОЙ ХОРОШИЙ ДРУГ ОДНАЖДЫ ПОКАЗАЛ МНЕ Т
     title: 'с меня угараешь',
     date: '30.11.25',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/ugaraesh.gif',
+    cover: '/images/covers/ugaraesh.gif',
     listenUrl: 'https://soundcloud.com/zverskinapalen/s-menya-ugaraesh',
     text: `каждый раз ты палишь, когда я снова в зане
 когда домой пришел накуренный и обтекаю
@@ -486,7 +486,7 @@ history: `я хрупкий парень`
     title: 'РАКОВОБОЛЬНОЙ УРОДЛИВЫЙ РЕБЁНОК',
     date: '12.11.25',
     performer: 'zverski napalen :3, mr. whoopee',
-    cover: 'images/covers/child.png',
+    cover: '/images/covers/child.png',
     listenUrl: 'https://t.me/mister_whoopee/487',
     text: `[mr. whoopee]
 Ныряю в свою съемную квартиру, пропитанную зеленым дымом
@@ -577,7 +577,7 @@ history: `ДОЛГО ЛЕЖАЛ КУПЛЕТ. ДОПИСЫВАЛ В РАЗНОЕ
     title: 'созвонились_в_максе // пазнякс_diss_challenge',
     date: '2025',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/diss.png',
+    cover: '/images/covers/diss.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/crockysippin',
     text: `я пописал прямо на себя когда купался в ванне
 мы оба инвалиды, ты завидуешь, я александр ганин
@@ -613,7 +613,7 @@ history: `ВЫ ВИДИТЕ ЭТО, ДА? ПАЗНЯКС ХАЙПУЕТ ЕПТА
     title: '#СВИНЯЧИЙДРИПЧИК',
     date: '2025',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/drip.png',
+    cover: '/images/covers/drip.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/svinyachiydripchik',
     text: `это свинячий дрипчик на мне огромные рыла
 цени мой бедпигес флоу я хрюкатал меня накрыло
@@ -643,7 +643,7 @@ history: `Я ОБОЖАЮ СВИНОК ИЗ ИГРЫ ЭНГРИ БЕРДС. Я �
     title: 'YT2015TYPESHIT',
     date: '2025',
     performer: 'zverski napalen :3, черные деньги',
-    cover: 'images/covers/yttype.png',
+    cover: '/images/covers/yttype.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/yt2015typeshit',
     text: `[zverski napalen :3]
 захожу заработать в сеть  - немного нахитрил там
@@ -707,7 +707,7 @@ history: `В РЕКОМЕНДАЦИЯХ МНЕ ВЫПАЛ НЕКИЙ ЛЮБИМ�
     title: 'ТРЕМСЯ ЧАКРАМИ',
     date: '2025',
     performer: 'zverski napalen :3, mr. whoopee, МС Princessa Нури',
-    cover: 'images/covers/tremsya.jpg',
+    cover: '/images/covers/tremsya.jpg',
     listenUrl: 'https://soundcloud.com/zverskinapalen/tremsya-chakrami',
     text: `[mr. whoopee]
 Я взорвал колпак
@@ -842,7 +842,7 @@ history: `Мистер Вупи, [18.09.2025 17:08]
     title: 'ДаВаЙ ПоХаПаЕm',
     date: '2025',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/davai.png',
+    cover: '/images/covers/davai.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/davay-pokhapaem',
     text: `давай похапаем 
 ты пописаешь мне в ротик в ванне
@@ -879,7 +879,7 @@ history: `ПРИЛЕТЕЛА КО МНЕ МОЯ ДЕВОЧКА И Я ПОДАР�
     title: 'Г/\\@МYРNЬIЙ П@Д0Н@К COVER',
     date: '2025',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/glamurniy.png',
+    cover: '/images/covers/glamurniy.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/glamyrniy-pad0nak-cover',
     text: `Гламурный подонок
 Гламурный подонок
@@ -930,7 +930,7 @@ history: `ПОМОГАЛ ПОДРУГЕ СВОДИТЬ ТРЕК НА ИНСТР�
     title: '5 GRAMS // lyrical version :(',
     date: '2025',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/5grl.jpg',
+    cover: '/images/covers/5grl.jpg',
     listenUrl: 'https://soundcloud.com/zverskinapalen/5grams_lyricalversion',
     text: `i cant find pussy anywhere
     
@@ -967,7 +967,7 @@ history: `ТОГДА ТОЛЬКО ПЛАНИРОВАЛСЯ ТРЕК РАКОВО
     title: '5 GRAMS',
     date: '2025',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/5gr.jpg',
+    cover: '/images/covers/5gr.jpg',
     listenUrl: 'https://soundcloud.com/zverskinapalen/5grams',
     text: `птичка в клетке
 курить через пипетку
@@ -1004,7 +1004,7 @@ history: `УВИДЕЛ В КАНАЛЕ "БЕССЛАВНЫЕ УБЛЮДКИ" Н�
     title: 'Я ебал в рот COVER',
     date: '2025',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/yaebalvrot.jpg',
+    cover: '/images/covers/yaebalvrot.jpg',
     listenUrl: 'https://soundcloud.com/mc-izumrud/ia-ebal-v-rot-4',
     text: `[Техник]
 Дарова, друзья! Меня зовут Паша Техник. Пользуясь случаем передаю всем беззубым, у которых здесь проёбана калитка, счастья здоровья, епта. Крепитесь. Надеюсь у вас хоть рубль в кармане появится, епта. Бичела ебаная бля.
@@ -1055,7 +1055,7 @@ history: `МОЙ ПРИЯТНЫЙ ТОВАРИЩ МС ОЛАДУХ ПРИГЛА�
     title: 'СОБАКА В РЕХАБЕ',
     date: '15.05.25',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/rehab.png',
+    cover: '/images/covers/rehab.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/sobaka-v-rekhabe',
     text: `у меня есть милый песик дог и он в рехаб прилег 
 у меня есть милый песик дог и он в рехаб прилег 
@@ -1100,7 +1100,7 @@ history: `ПРЯМО В ПАРАШЕ ШКОЛЯР ЗАЯВИЛ СВОЕМУ ТО
     title: 'ODIN KASSIR',
     date: '27.03.25',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/odinkassir.png',
+    cover: '/images/covers/odinkassir.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/odin-kassir',
     text: `один кассир
 я залетаю
@@ -1153,7 +1153,7 @@ history: `ПРЯМО В ПАРАШЕ ШКОЛЯР ЗАЯВИЛ СВОЕМУ ТО
     title: '3ависим ( ͡° ͜ʖ ͡°)',
     date: '02.03.25',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/3avisim.jpg',
+    cover: '/images/covers/3avisim.jpg',
     listenUrl: 'https://soundcloud.com/zverskinapalen/3avisim',
     text: `Вы слушаете радио КАЛИНА КРАСНАЯ.
 КАЛИНА КРАСНАЯ - МУЗЫКА РУССКОЙ ДУШИ.
@@ -1195,7 +1195,7 @@ history: `ПРЯМО В ПАРАШЕ ШКОЛЯР ЗАЯВИЛ СВОЕМУ ТО
     title: 'XEP',
     date: '19.02.25',
     performer: 'zverski napalen :3, пастарония',
-    cover: 'images/covers/xep.png',
+    cover: '/images/covers/xep.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/xep',
     text: `— Так, хер с небольшим. Ну это может снять немножко...действие...
 — Что небольшая?
@@ -1255,7 +1255,7 @@ history: `ПРЯМО В ПАРАШЕ ШКОЛЯР ЗАЯВИЛ СВОЕМУ ТО
     title: 'Цитаты про волков',
     date: '17.01.25',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/volk.jpg',
+    cover: '/images/covers/volk.jpg',
     listenUrl: 'https://soundcloud.com/zverskinapalen/czitaty-pro-volkov',
     text: `такие черные глаза
 не видно огромных зрачков
@@ -1303,7 +1303,7 @@ history: `ПРЯМО В ПАРАШЕ ШКОЛЯР ЗАЯВИЛ СВОЕМУ ТО
     title: 'LAZER NAPASIK (ft. bombom)',
     date: '02.01.25',
     performer: 'zverski napalen :3',
-    cover: 'images/covers/lazer.png',
+    cover: '/images/covers/lazer.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/lazer-napasik-ft-bombom',
     text: `[zverski napalen :3]
 рип бомбом батл реп не щадит никого
@@ -1370,7 +1370,7 @@ history: `ПРЯМО В ПАРАШЕ ШКОЛЯР ЗАЯВИЛ СВОЕМУ ТО
     title: '2 Пидора',
     date: '31.12.24',
     performer: 'zverski napalen :3, МЦ Принцесса Нури',
-    cover: 'images/covers/2pidora.png',
+    cover: '/images/covers/2pidora.png',
     listenUrl: 'https://soundcloud.com/zverskinapalen/2-pidora',
     text: `[Яндекс Алиса]
 Иван Горожанкин, известный под псевдонимом IVANES — российский рэп-исполнитель, родившийся 18 марта 2004 года в Старом Осколе.

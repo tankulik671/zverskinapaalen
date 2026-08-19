@@ -4,6 +4,13 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { tracksData } from '@/data/tracks';
 
+const getCoverUrl = (cover) => {
+  if (!cover) return '/images/covers/zabrali.png';
+  const c = cover.trim();
+  if (c.startsWith('/') || c.startsWith('http')) return c;
+  return '/' + c;
+};
+
 export default function DiscographyPage() {
   const [selectedTrack, setSelectedTrack] = useState(null);
   const [activeTab, setActiveTab] = useState('text'); // 'text' | 'history'
@@ -212,7 +219,7 @@ export default function DiscographyPage() {
                     }}
                   >
                     <img
-                      src={t.cover ? t.cover.trim() : '/images/covers/zabrali.png'}
+                      src={getCoverUrl(t.cover)}
                       alt={t.title}
                       style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                       loading="lazy"
@@ -400,9 +407,9 @@ export default function DiscographyPage() {
           <div style={{ padding: 8, color: '#dfefff' }}>
             <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', flexWrap: 'wrap' }}>
               <img
-                src={selectedTrack.cover ? selectedTrack.cover.trim() : '/images/covers/zabrali.png'}
+                src={getCoverUrl(selectedTrack.cover)}
                 alt={selectedTrack.title}
-                onClick={() => window.open(selectedTrack.cover ? selectedTrack.cover.trim() : '', '_blank')}
+                onClick={() => window.open(getCoverUrl(selectedTrack.cover), '_blank')}
                 style={{
                   width: 240,
                   height: 240,
@@ -565,7 +572,7 @@ export default function DiscographyPage() {
                     }}
                   >
                     <img
-                      src={t.cover ? t.cover.trim() : '/images/covers/zabrali.png'}
+                      src={getCoverUrl(t.cover)}
                       alt={t.title}
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       loading="lazy"

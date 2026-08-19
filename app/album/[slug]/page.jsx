@@ -88,9 +88,9 @@ export default function DynamicAlbumPage({ params }) {
               {/* Left Column */}
               <div style={{ flex: '0 0 340px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <img
-                  src={album.cover}
+                  src={album.cover ? (album.cover.trim().startsWith('/') || album.cover.startsWith('http') ? album.cover.trim() : '/' + album.cover.trim()) : '/images/covers/zabrali.png'}
                   alt={album.title}
-                  onClick={() => window.open(album.cover, '_blank')}
+                  onClick={() => window.open(album.cover ? (album.cover.trim().startsWith('/') || album.cover.startsWith('http') ? album.cover.trim() : '/' + album.cover.trim()) : '', '_blank')}
                   style={{
                     width: 320,
                     height: 320,

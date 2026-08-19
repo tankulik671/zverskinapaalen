@@ -9,6 +9,7 @@ const AuthContext = createContext({
   loading: true,
   login: async () => {},
   register: async () => {},
+  loginWithGoogle: async () => {},
   logout: async () => {},
   updateProfile: async () => {},
   uploadAvatar: async () => {},
@@ -19,7 +20,7 @@ export function AuthProvider({ children }) {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchProfile = useCallback(async (userId) => {
+  const fetchProfile = useCallback(async (userId, sessionUser = null) => {
     if (!userId) {
       setProfile(null);
       return null;
@@ -35,6 +36,39 @@ export function AuthProvider({ children }) {
         console.warn('Profile fetch warning:', error.message);
         return null;
       }
+
+      // If user profile does not exist in 'users' table (e.g. first login via Google OAuth)
+      if (!data && sessionUser) {
+        const defaultNick = (
+          sessionUser.user_metadata?.full_name ||
+          sessionUser.user_metadata?.name ||
+          sessionUser.email?.split('@')[0] ||
+          'user'
+        ).slice(0, 20);
+
+        const defaultPhoto =
+          sessionUser.user_metadata?.avatar_url ||
+          sessionUser.user_metadata?.picture ||
+          '/images/avatarka01.jpg';
+
+        const { data: newProf, error: insertError } = await supabase
+          .from('users')
+          .upsert({
+            id: userId,
+            nickname: defaultNick,
+            email: sessionUser.email || '',
+            photo: defaultPhoto,
+            about: 'Расскажи о себе',
+          })
+          .select()
+          .maybeSingle();
+
+        if (!insertError && newProf) {
+          setProfile(newProf);
+          return newProf;
+        }
+      }
+
       setProfile(data || null);
       return data;
     } catch (err) {
@@ -53,7 +87,7 @@ export function AuthProvider({ children }) {
 
         if (session?.user) {
           setUser(session.user);
-          await fetchProfile(session.user.id);
+          await fetchProfile(session.user.id, session.user);
         } else {
           setUser(null);
           setProfile(null);
@@ -71,7 +105,7 @@ export function AuthProvider({ children }) {
       if (!mounted) return;
       if (session?.user) {
         setUser(session.user);
-        await fetchProfile(session.user.id);
+        await fetchProfile(session.user.id, session.user);
       } else {
         setUser(null);
         setProfile(null);
@@ -133,6 +167,17 @@ export function AuthProvider({ children }) {
     return currentProf;
   };
 
+  const loginWithGoogle = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: typeof window !== 'undefined' ? `${window.location.origin}/login` : undefined,
+      },
+    });
+    if (error) throw error;
+    return data;
+  };
+
   const logout = async () => {
     await supabase.auth.signOut();
     setUser(null);
@@ -180,6 +225,7 @@ export function AuthProvider({ children }) {
         loading,
         login,
         register,
+        loginWithGoogle,
         logout,
         updateProfile,
         uploadAvatar,

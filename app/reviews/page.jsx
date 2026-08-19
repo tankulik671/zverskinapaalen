@@ -71,7 +71,7 @@ export default function ReviewsPage() {
     const newStructure = parseInt(prompt('Структура / Ритмика (1-10):', String(review.structure))) || review.structure;
     const newStyle = parseInt(prompt('Реализация стиля (1-10):', String(review.style))) || review.style;
     const newCharisma = parseInt(prompt('Индивидуальность / Харизма (1-10):', String(review.charisma))) || review.charisma;
-    const newVibe = parseFloat(prompt('Атмосфера / Вайб (1-5):', String(review.vibe))) || review.vibe;
+    const newVibe = parseFloat(prompt('Атмосфера / Вайб (1-10):', String(review.vibe))) || review.vibe;
 
     const baseScore = newRhymes + newStructure + newStyle + newCharisma;
     const totalScore = parseFloat((baseScore * 1.4 * (1 + (newVibe - 1) * 0.06747)).toFixed(2));
@@ -181,6 +181,24 @@ export default function ReviewsPage() {
                       <h3 style={{ color: '#00ccff', fontSize: '1.3em', margin: 0 }}>
                         {r.track_title} {r.performer ? `— ${r.performer}` : ''}
                       </h3>
+                      {r.nomination && (
+                        <div style={{ marginTop: 4 }}>
+                          <span
+                            style={{
+                              display: 'inline-block',
+                              padding: '2px 8px',
+                              background: 'rgba(0, 204, 255, 0.15)',
+                              border: '1px solid #00ccff',
+                              borderRadius: 4,
+                              color: '#00ccff',
+                              fontSize: '0.85em',
+                              fontWeight: 'bold',
+                            }}
+                          >
+                            🏆 {r.nomination}
+                          </span>
+                        </div>
+                      )}
                       <p style={{ margin: '6px 0', color: '#cfefff' }}>
                         <strong>Автор:</strong> {r.user_nickname || '(без ника)'}
                       </p>
@@ -190,7 +208,7 @@ export default function ReviewsPage() {
                         <div>Структура/Ритмика: {r.structure} / 10</div>
                         <div>Реализация стиля: {r.style} / 10</div>
                         <div>Харизма: {r.charisma} / 10</div>
-                        <div>Вайб: {r.vibe} / 5</div>
+                        <div>Атмосфера / Вайб: {r.vibe} / 10</div>
                       </div>
 
                       <div style={{ fontSize: '1.4em', color: '#00b7ff', fontWeight: 'bold', margin: '10px 0' }}>
